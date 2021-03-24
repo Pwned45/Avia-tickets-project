@@ -1,4 +1,4 @@
-# Avia-tickets-project
+# Avia-tickets
 Поиск электронных авиабилетов
 ## Команда проекта
 * Pwned45 - Даниил Коновалов, гр.2.1 daniloid2015@yandex.ru 
