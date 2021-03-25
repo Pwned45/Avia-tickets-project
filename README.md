@@ -9,5 +9,5 @@
 * [Miro](https://miro.com/app/board/o9J_lQqL6Xc=/)
 ## Документация
 * [ТЗ](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/TZ.pdf)
-* [Курсовая.docx]https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/курсовая.docx)
+* [Курсовая.docx](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/курсовая.docx)
 ## Сайт
