@@ -10,6 +10,4 @@
 ## Документация
 * [ТЗ](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/TZ.pdf)
 * [Курсовая.docx](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F.docx)
-* доки
-* доки
 ## Сайт
