@@ -34,5 +34,5 @@ public class Bid {
 
     @OneToMany(mappedBy = "bid", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
         orphanRemoval = true)
-    private List<AdditionalServce> additionalServces = new ArrayList<>();
+    private List<Additional> additionalServces = new ArrayList<>();
 }

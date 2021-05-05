@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "additionalServce")
-public class AdditionalServce {
+public class Additional {
     @Id
     @Column(name = "id_add_con")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

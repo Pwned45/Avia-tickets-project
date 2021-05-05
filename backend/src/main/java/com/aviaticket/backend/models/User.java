@@ -26,6 +26,10 @@ public class User {
     @JoinColumn(name = "id_location", nullable = false)
     private Location location;
 
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Roles roles;
+
     @Column(name = "name")
     private String name;
 

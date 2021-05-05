@@ -33,5 +33,5 @@ public class Conditionals {
 
     @OneToMany(mappedBy = "conditionals", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
         orphanRemoval = true)
-    private List<AdditionalServce> additionalServces = new ArrayList<>();
+    private List<Additional> additionalServces = new ArrayList<>();
 }
