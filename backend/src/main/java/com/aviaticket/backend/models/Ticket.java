@@ -1,0 +1,59 @@
+package com.aviaticket.backend.models;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "ticket")
+public class Ticket {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_tiket")
+    private Long idTiket;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "place_start", nullable = false)
+    private Location location;//ЭТО МЕСТО ОТКУДА ЛЕТИМ, не знаю как место прибытия сделать
+//
+//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    @JoinColumn(name = "place_end", nullable = false)
+//    private Location locationend;
+//
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "id_way", nullable = false)
+    private Way way;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_seat", referencedColumnName = "id")
+    private Seat seat;
+
+    @Column(name = "date_start")
+    private Date startDate;
+
+    @Column(name = "date_end")
+    private Date endDate;
+
+    @Column(name = "airport_start")
+    private String airportStart;
+
+    @Column(name = "airport_end")
+    private String airportEnd;
+
+    @Column(name = "price")
+    private Long price;
+
+    @OneToMany(mappedBy = "ticket", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
+        orphanRemoval = true)
+    private List<Bid> bids = new ArrayList<>();
+}
