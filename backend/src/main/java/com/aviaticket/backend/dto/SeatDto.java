@@ -1,6 +1,5 @@
 package com.aviaticket.backend.dto;
 
-import com.aviaticket.backend.models.Plane;
 import com.aviaticket.backend.models.Ticket;
 import com.aviaticket.backend.transfer.Existing;
 import com.aviaticket.backend.transfer.New;
@@ -23,8 +22,8 @@ public class SeatDto {
     @NotNull(groups = {Existing.class})
     private Long idSeat;
 
-    @NotNull(groups = {New.class, Existing.class})
-    private Ticket ticket;
+//    @NotNull(groups = {New.class, Existing.class})
+//    private TicketDto ticketDto;
 
     @NotNull(groups = {New.class})
     @Null(groups = {Existing.class})

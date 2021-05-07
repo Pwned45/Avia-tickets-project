@@ -1,6 +1,5 @@
 package com.aviaticket.backend.dto;
 
-import com.aviaticket.backend.models.Location;
 import com.aviaticket.backend.models.Roles;
 import com.aviaticket.backend.transfer.Existing;
 import com.aviaticket.backend.transfer.New;
@@ -23,7 +22,7 @@ public class UserDto {
     private Long idUser;
 
     @NotNull(groups = {New.class, Existing.class})
-    private Location location;
+    private LocationDto locationDto;
 
     @Null(groups = {New.class})
     private Roles roles;

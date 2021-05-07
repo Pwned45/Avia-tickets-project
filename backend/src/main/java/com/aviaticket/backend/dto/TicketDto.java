@@ -1,7 +1,5 @@
 package com.aviaticket.backend.dto;
 
-import com.aviaticket.backend.models.Seat;
-import com.aviaticket.backend.models.Way;
 import com.aviaticket.backend.transfer.Existing;
 import com.aviaticket.backend.transfer.New;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -9,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
