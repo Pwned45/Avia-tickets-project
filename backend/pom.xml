@@ -98,14 +98,11 @@
             <version>${org.mapstruct.version}</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.oracle</groupId>-->
-<!--            <artifactId>ojdbc</artifactId>-->
-<!--            <version>8</version>-->
-<!--            <scope>system</scope>-->
-<!--            <systemPath>${oracle.path}/ojdbc8.jar</systemPath>-->
-<!--        </dependency>-->
-
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.18</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
