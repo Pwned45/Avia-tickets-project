@@ -11,16 +11,16 @@ import java.util.List;
 @Mapper(componentModel = "spring",uses = {BidMapper.class,UserMapper.class})
 public interface ChecksMapper {
     @Mappings({
-        @Mapping(source = "way", target = "wayDto"),
-        @Mapping(source = "seat", target = "seatDto"),
+        @Mapping(source = "user", target = "userDto"),
+        @Mapping(source = "bid", target = "bidDto"),
     })
     CheckDto toCheckDTO(Checks checks);
 
     List<CheckDto> toCheckDTOs(List<Checks> checksList);
 
     @Mappings({
-        @Mapping(source = "way", target = "wayDto"),
-        @Mapping(source = "seat", target = "seatDto"),
+        @Mapping(target = "user", source = "userDto"),
+        @Mapping(target = "bid", source = "bidDto"),
     })
     Checks toCheck(CheckDto checksDto);
 }

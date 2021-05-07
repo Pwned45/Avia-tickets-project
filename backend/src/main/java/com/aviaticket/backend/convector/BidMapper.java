@@ -16,6 +16,6 @@ public interface BidMapper {
 
     List<BidDto> toBidDTOs(List<Bid> bid);
 
-    @Mapping(source = "ticket", target = "ticketDto")
+    @Mapping(target = "ticket", source = "ticketDto")
     Bid toBid(BidDto bidDto);
 }
