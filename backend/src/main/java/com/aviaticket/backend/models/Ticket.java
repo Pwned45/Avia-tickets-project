@@ -23,14 +23,6 @@ public class Ticket {
     private Long idTiket;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "place_start", nullable = false)
-    private Location location;//ЭТО МЕСТО ОТКУДА ЛЕТИМ, не знаю как место прибытия сделать
-//
-//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    @JoinColumn(name = "place_end", nullable = false)
-//    private Location locationend;
-//
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "id_way", nullable = false)
     private Way way;
 
@@ -43,12 +35,6 @@ public class Ticket {
 
     @Column(name = "date_end")
     private Date endDate;
-
-    @Column(name = "airport_start")
-    private String airportStart;
-
-    @Column(name = "airport_end")
-    private String airportEnd;
 
     @Column(name = "price")
     private Long price;

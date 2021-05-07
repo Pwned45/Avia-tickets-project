@@ -23,15 +23,19 @@ public class Way {
     private Long idWay;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "id_location", nullable = false)
-    private Location location;
+    @JoinColumn(name = "point_start", nullable = false)
+    private Point pointFirst;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "point_end", nullable = false)
+    private Point pointEnd;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "id_plane", nullable = false)
     private Plane plane;
 
-    @Column(name = "number")
-    private Integer number;
+    @Column(name = "time")
+    private Integer time;
 
     @OneToMany(mappedBy = "way", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
         orphanRemoval = true)

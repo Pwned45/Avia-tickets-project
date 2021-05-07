@@ -25,13 +25,8 @@ public class Location {
     @Column(name = "country")
     private String country;
 
-    @OneToMany(mappedBy = "location", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
-        orphanRemoval = true)
-    private List<Ticket> tickets = new ArrayList<>();
-
-//    @OneToMany(mappedBy = "locationend", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
-//        orphanRemoval = true)
-//    private List<Ticket> ticketsend = new ArrayList<>();
+    @Column(name = "city")
+    private String city;
 
     @OneToMany(mappedBy = "location", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
         orphanRemoval = true)
@@ -39,5 +34,6 @@ public class Location {
 
     @OneToMany(mappedBy = "location", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
         orphanRemoval = true)
-    private List<Way> ways = new ArrayList<>();
+    private List<Point> points = new ArrayList<>();
+
 }
