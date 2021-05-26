@@ -39,9 +39,6 @@ public class User {
     @Column(name = "born_day")
     private Date bornDay;
 
-    @Column(name = "money")
-    private Long money;
-
     @Column(name = "login")
     private String login;
 

@@ -37,15 +37,12 @@ public class UserDto {
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Europe/Moscow")
     private Date bornDay;
 
-    @NotNull(groups = {New.class, Existing.class})
-    private Long money;
 
     @NotNull(groups = {New.class})
     @Null(groups = {Existing.class})
     private String login;
 
     @NotNull(groups = {New.class})
-    @Null(groups = {Existing.class})
     private String pass;
 
     @NotNull(groups = {New.class, Existing.class})
