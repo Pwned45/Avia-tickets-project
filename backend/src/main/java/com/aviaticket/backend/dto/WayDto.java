@@ -28,7 +28,4 @@ public class WayDto {
     @NotNull(groups = {New.class, Existing.class})
     private PlaneDto planeDto;
 
-    @NotNull(groups = {New.class, Existing.class})
-    private Integer time;
-
 }

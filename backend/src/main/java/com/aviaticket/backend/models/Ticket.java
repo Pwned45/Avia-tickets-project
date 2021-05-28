@@ -22,8 +22,8 @@ public class Ticket {
     @Column(name = "id_tiket")
     private Long idTiket;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "id_way", nullable = false)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "id_way", referencedColumnName = "id_way",nullable = false)
     private Way way;
 
     @OneToOne(cascade = CascadeType.ALL)

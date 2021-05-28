@@ -38,4 +38,8 @@ public class TicketDto {
     @NotNull(groups = {New.class, Existing.class})
     private Long price;
 
+    @NotNull(groups = {New.class, Existing.class})
+    private Integer flag;
+
+
 }

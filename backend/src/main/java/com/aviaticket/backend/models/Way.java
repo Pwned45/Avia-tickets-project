@@ -34,7 +34,6 @@ public class Way {
     @JoinColumn(name = "id_plane", nullable = false)
     private Plane plane;
 
-    @OneToMany(mappedBy = "way", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
-        orphanRemoval = true)
-    private List<Ticket> tickets = new ArrayList<>();
+    @OneToOne(mappedBy = "way")
+    private Ticket ticket;
 }
