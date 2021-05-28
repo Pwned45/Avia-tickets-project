@@ -22,7 +22,6 @@ public class Point {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPoint;
 
-
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "id_location", nullable = false)
     private Location location;

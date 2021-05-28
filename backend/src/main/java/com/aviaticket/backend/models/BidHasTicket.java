@@ -12,16 +12,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "additionalCondit")
-public class Additional {
+@Table(name = "bidhasticket")
+public class BidHasTicket {
     @Id
-    @Column(name = "id_add_con")
+    @Column(name = "id_bht")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idAddCond;
+    private Long idBht;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "id_adc", nullable = false)
-    private Conditionals conditionals;
+    @JoinColumn(name = "id_tiket", nullable = false)
+    private Ticket ticket;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "id_bid", nullable = false)

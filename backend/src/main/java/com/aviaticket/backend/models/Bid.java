@@ -22,10 +22,6 @@ public class Bid {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idBid;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "id_tiket", nullable = false)
-    private Ticket ticket;
-
     @Column(name = "date")
     private Date date;
 
@@ -35,4 +31,8 @@ public class Bid {
     @OneToMany(mappedBy = "bid", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
         orphanRemoval = true)
     private List<Additional> additionalServces = new ArrayList<>();
+
+    @OneToMany(mappedBy = "bid", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
+        orphanRemoval = true)
+    private List<BidHasTicket> bidHasTickets = new ArrayList<>();
 }

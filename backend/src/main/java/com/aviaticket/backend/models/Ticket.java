@@ -27,7 +27,7 @@ public class Ticket {
     private Way way;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_seat", referencedColumnName = "id")
+    @JoinColumn(name = "id_seat", referencedColumnName = "id_seat")
     private Seat seat;
 
     @Column(name = "date_start")
@@ -39,7 +39,11 @@ public class Ticket {
     @Column(name = "price")
     private Long price;
 
+    @Column(name = "flag")
+    private Integer flag;
+
     @OneToMany(mappedBy = "ticket", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
         orphanRemoval = true)
-    private List<Bid> bids = new ArrayList<>();
+    private List<BidHasTicket> bidHasTickets = new ArrayList<>();
+
 }
