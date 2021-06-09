@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @Column(name = "id_user")
@@ -26,29 +26,29 @@ public class User {
     @JoinColumn(name = "id_location", nullable = false)
     private Location location;
 
-    @Column(name = "role")
+    @Column(name = "user_role")
     @Enumerated(EnumType.STRING)
     private Roles roles;
 
-    @Column(name = "name")
+    @Column(name = "user_name")
     private String name;
 
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "born_day")
+    @Column(name = "born_date")
     private Date bornDay;
 
-    @Column(name = "login")
+    @Column(name = "user_login")
     private String login;
 
-    @Column(name = "pass")
+    @Column(name = "user_pass")
     private String pass;
 
-    @Column(name = "email")
+    @Column(name = "user_email")
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "user_telephone")
     private Long phone;
 
     @OneToMany(mappedBy = "user", cascade = {CascadeType.MERGE, CascadeType.PERSIST},

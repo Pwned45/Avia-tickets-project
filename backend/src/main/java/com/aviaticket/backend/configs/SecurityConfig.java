@@ -21,7 +21,8 @@ import java.util.Arrays;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+    private static final String LOGIN_ENDPOINT = "/auth/**";
+    private static final String SWAGGER = "/swagger-ui/**";
     private final JwtTokenProvider jwtTokenProvider;
 
     @Autowired
@@ -42,7 +43,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
-//            .anyRequest().authenticated()
+            .antMatchers(LOGIN_ENDPOINT).permitAll()
+            .antMatchers(SWAGGER).permitAll()
+        //    .anyRequest().authenticated()
             .and()
             .apply(new JwtConfigurer(jwtTokenProvider));
     }

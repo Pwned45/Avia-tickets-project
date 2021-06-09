@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "plane")
 public class Plane {
     @Id
-    @Column(name = "id_plane")
+    @Column(name = "plane_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPlane;
 

@@ -22,12 +22,13 @@ public class Way {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idWay;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "point_start", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "point_first_id", referencedColumnName = "id_point")
     private Point pointFirst;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "point_end", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "point_end_id", referencedColumnName = "id_point")
+    // @JoinColumn(name = "point_end", nullable = false)
     private Point pointEnd;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})

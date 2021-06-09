@@ -20,7 +20,7 @@ public class BidHasTicket {
     private Long idBht;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "id_tiket", nullable = false)
+    @JoinColumn(name = "id_ticket", nullable = false)
     private Ticket ticket;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})

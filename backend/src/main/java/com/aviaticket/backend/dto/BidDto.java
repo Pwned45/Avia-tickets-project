@@ -22,9 +22,9 @@ public class BidDto {
     @NotNull(groups = {Existing.class})
     private Long idBid;
 
-    @NotNull(groups = {New.class})
-    @Null(groups = {Existing.class})
-    private TicketDto ticketDto;
+//    @NotNull(groups = {New.class})
+//    @Null(groups = {Existing.class})
+//    private TicketDto ticketDto;
 
     @NotNull(groups = {New.class, Existing.class})
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Europe/Moscow")

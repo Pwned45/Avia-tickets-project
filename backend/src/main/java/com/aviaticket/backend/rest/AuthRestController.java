@@ -63,7 +63,8 @@ public class AuthRestController {
             response.put("born", user.getBornDay());
             response.put("emale", user.getEmail());
             response.put("phone", user.getPhone());
-            response.put("location", user.getLocation());
+            response.put("location_id", user.getLocation().getIdLocation());
+            response.put("location_city", user.getLocation().getCity());
 
             return ResponseEntity.ok(response);
 

@@ -22,7 +22,7 @@ public class Bid {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idBid;
 
-    @Column(name = "date")
+    @Column(name = "data")
     private Date date;
 
     @Column(name = "price")

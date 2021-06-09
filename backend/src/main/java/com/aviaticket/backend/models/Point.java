@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Getter
@@ -35,12 +33,17 @@ public class Point {
     @Column(name = "number")
     private Integer number;
 
+    @OneToOne(mappedBy = "pointFirst")
+    private Way wayStart;
 
-    @OneToMany(mappedBy = "pointFirst", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
-        orphanRemoval = true)
-    private List<Way> waysone = new ArrayList<>();
-    @OneToMany(mappedBy = "pointEnd", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
-        orphanRemoval = true)
-    private List<Way> waystwo = new ArrayList<>();
+    @OneToOne(mappedBy = "pointEnd")
+    private Way wayEnd;
+
+//    @OneToMany(mappedBy = "pointFirst", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
+//        orphanRemoval = true)
+//    private List<Way> waysone = new ArrayList<>();
+//    @OneToMany(mappedBy = "pointEnd", cascade = {CascadeType.MERGE, CascadeType.PERSIST},
+//        orphanRemoval = true)
+//    private List<Way> waystwo = new ArrayList<>();
 
 }

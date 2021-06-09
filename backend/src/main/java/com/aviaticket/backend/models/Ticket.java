@@ -19,7 +19,7 @@ import java.util.List;
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_tiket")
+    @Column(name = "id_ticket")
     private Long idTiket;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
