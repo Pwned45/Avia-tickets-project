@@ -7,101 +7,10 @@
   font-size: 35px;
   font-weight: 700;
 }
-.nav-link {
-  color: #F4EADE;
-
-}
-
-.nav-item {
-  color: #F4EADE;
-
-}
-
-.one {
-  margin-right: 4%;
-  background: white;
-  color: #2F496E;
-  border: 1px solid #3e8e41;
-}
-
-.one:hover {
-  border: 1px solid #F4EADE;
-  background: #2F496E;
-  color: #F4EADE;
-}
-
-.two {
-  margin-right: 4%;
-  background: white;
-  color: #AF1C1C;
-  border: 1px solid #AF1C1C;
-}
-
-.two:hover {
-  border: 1px solid #AF1C1C;
-  background: #AF1C1C;
-  color: #F4EADE;
-}
-
-
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.assets {
-  width: 30px;
-  height: 30px;
-}
-
-.assets1 {
-  width: 29px;
-  height: 29px;
-}
-
-/* Контейнер <div> - необходимо разместить выпадающий контент */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Выпадающий контент (скрыт по умолчанию) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-/* Ссылки внутри выпадающего */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
+.navbar-text{
+  color: #fcfcfc;
+  line-height: 35px;
+  font-size: 27px;
+  font-weight: 300;
   text-decoration: none;
-  display: block;
-}
-
-/* Изменить цвет выпадающих ссылок при наведении */
-.dropdown-content a:hover {
-  background-color: #f1f1f1
-}
-
-/* Показать выпадающее меню при наведении */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Изменить цвет фона кнопки выпадающего списка, когда отображается содержимое выпадающего списка. */
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
-}
-.logo{
-  font-weight: 600;
-  font-size: 28px;
 }

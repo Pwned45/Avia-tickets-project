@@ -7,13 +7,23 @@ import { HeaderComponent } from './header/header.component';
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomepageComponent} from "./homepage/homepage.component";
+import {BrasketComponent} from "./brasket/brasket.component";
+import {FindComponent} from "./find/find.component";
+import {ProfileComponent} from "./profile/profile.component";
+import {RegisrtComponent} from "./regisrt/regisrt.component";
+import {LoginComponent} from "./login/login.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    HomepageComponent
+    HomepageComponent,
+    BrasketComponent,
+    FindComponent,
+    ProfileComponent,
+    RegisrtComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
