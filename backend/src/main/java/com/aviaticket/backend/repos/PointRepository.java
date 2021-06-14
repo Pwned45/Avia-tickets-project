@@ -20,4 +20,10 @@ public interface PointRepository extends JpaRepository<Point,Long> {
     )
     List<Point> findPointByRoute(@Param("route")Long route);
 
+    @Query(
+        value = Utils.FIND_POINT,
+        nativeQuery = true
+    )
+    List<Point> findPoint(@Param("city")String route);
+
 }

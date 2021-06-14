@@ -35,6 +35,6 @@ public class Way {
     @JoinColumn(name = "id_plane", nullable = false)
     private Plane plane;
 
-    @OneToOne(mappedBy = "way")
+    @OneToOne(mappedBy = "way", orphanRemoval = true)
     private Ticket ticket;
 }

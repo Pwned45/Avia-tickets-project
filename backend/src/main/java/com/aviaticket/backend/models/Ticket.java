@@ -20,13 +20,13 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_ticket")
-    private Long idTiket;
+    private Long idTicket;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToOne
     @JoinColumn(name = "id_way", referencedColumnName = "id_way",nullable = false)
     private Way way;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "id_seat", referencedColumnName = "id_seat")
     private Seat seat;
 

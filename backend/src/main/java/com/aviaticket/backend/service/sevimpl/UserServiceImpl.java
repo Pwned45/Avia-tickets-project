@@ -1,19 +1,21 @@
 package com.aviaticket.backend.service.sevimpl;
 
 import com.aviaticket.backend.convector.ChecksMapper;
+import com.aviaticket.backend.convector.ConditionalsMapper;
+import com.aviaticket.backend.convector.TicketMapper;
 import com.aviaticket.backend.convector.UserMapper;
 import com.aviaticket.backend.dto.CheckDto;
 import com.aviaticket.backend.dto.UserDto;
 import com.aviaticket.backend.exeption.EntityNotFoundException;
 import com.aviaticket.backend.exeption.UserException;
-import com.aviaticket.backend.models.Roles;
-import com.aviaticket.backend.models.User;
+import com.aviaticket.backend.models.*;
 import com.aviaticket.backend.repos.LocationRepository;
 import com.aviaticket.backend.repos.UserRepository;
 import com.aviaticket.backend.service.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,14 +25,18 @@ public class UserServiceImpl implements UserService {
     private final ChecksMapper checksMapper;
     private final BCryptPasswordEncoder passwordEncoder;
     private final LocationRepository locationRepository;
+    private final TicketMapper ticketMapper;
+    private final ConditionalsMapper conditionalsMapper;
 
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, ChecksMapper checksMapper, BCryptPasswordEncoder passwordEncoder, LocationRepository locationRepository) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, ChecksMapper checksMapper, BCryptPasswordEncoder passwordEncoder, LocationRepository locationRepository, TicketMapper ticketMapper, ConditionalsMapper conditionalsMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
         this.checksMapper = checksMapper;
         this.passwordEncoder = passwordEncoder;
         this.locationRepository = locationRepository;
+        this.ticketMapper = ticketMapper;
+        this.conditionalsMapper = conditionalsMapper;
     }
 
 
@@ -57,7 +63,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<CheckDto> getHistory(Long id) throws EntityNotFoundException {
         User user = userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-        return checksMapper.toCheckDTOs(user.getChecks());
+        List<CheckDto> checkDto = new ArrayList<>();
+        List<Ticket> tickets = new ArrayList<>();
+        List<Conditionals> conditionals = new ArrayList<>();
+        for (Checks check : user.getChecks()) {
+            CheckDto c = checksMapper.toCheckDTO(check);
+            for (BidHasTicket bidHasTicket : check.getBid().getBidHasTickets()) {
+                tickets.add(bidHasTicket.getTicket());
+            }
+            for (Additional add : check.getBid().getAdditionalServces()) {
+                    conditionals.add(add.getConditionals());
+            }
+            c.getBidDto().setTicketDtos(ticketMapper.toTicketDTOs(tickets));
+            c.getBidDto().setConditionalsDtos(conditionalsMapper.toConditionalDTOs(conditionals));
+            checkDto.add(c);
+        }
+        return checkDto;
     }
 
     @Override

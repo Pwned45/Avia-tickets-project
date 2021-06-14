@@ -4,34 +4,39 @@ import com.aviaticket.backend.transfer.Existing;
 import com.aviaticket.backend.transfer.New;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
-@Setter
-@Getter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-public class BidDto {
-
+@AllArgsConstructor
+public class TicketDtoFront {
     @Null(groups = {New.class}, message = "The field must be empty")
     @NotNull(groups = {Existing.class})
-    private Long idBid;
+    private Long idTicket;
 
     @NotNull(groups = {New.class, Existing.class})
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Europe/Moscow")
-    private Date date;
+    private WayDto wayDto;
+
+    @NotNull(groups = {New.class, Existing.class})
+    private SeatDto seatDto;
+
+    @NotNull(groups = {New.class, Existing.class})
+
+    private String startDate;
+
+    @NotNull(groups = {New.class, Existing.class})
+
+    private String endDate;
 
     @NotNull(groups = {New.class, Existing.class})
     private Long price;
 
-    private List<ConditionalsDto> conditionalsDtos = new ArrayList<>();
+    @NotNull(groups = {New.class, Existing.class})
+    private Integer flag;
 
-    private List<TicketDto> ticketDtos = new ArrayList<>();
+
 }

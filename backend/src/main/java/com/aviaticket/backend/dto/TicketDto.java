@@ -19,7 +19,7 @@ import java.util.Date;
 public class TicketDto {
     @Null(groups = {New.class}, message = "The field must be empty")
     @NotNull(groups = {Existing.class})
-    private Long idTiket;
+    private Long idTicket;
 
     @NotNull(groups = {New.class, Existing.class})
     private WayDto wayDto;
@@ -28,11 +28,11 @@ public class TicketDto {
     private SeatDto seatDto;
 
     @NotNull(groups = {New.class, Existing.class})
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Europe/Moscow")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Europe/Moscow")
     private Date startDate;
 
     @NotNull(groups = {New.class, Existing.class})
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Europe/Moscow")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Europe/Moscow")
     private Date endDate;
 
     @NotNull(groups = {New.class, Existing.class})

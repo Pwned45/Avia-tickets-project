@@ -1,6 +1,7 @@
 package com.aviaticket.backend.rest;
 
 import com.aviaticket.backend.dto.CheckDto;
+import com.aviaticket.backend.dto.TicketDto;
 import com.aviaticket.backend.dto.UserDto;
 import com.aviaticket.backend.exeption.EntityNotFoundException;
 import com.aviaticket.backend.exeption.UserException;
@@ -18,6 +19,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -28,7 +31,7 @@ public class UserRestController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/all")
-    public ResponseEntity<List<UserDto>> listPosts() {
+    public ResponseEntity<List<UserDto>> allUsers() {
         List<UserDto> usersDtos = userService.listAll();
         if (usersDtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -36,7 +39,7 @@ public class UserRestController {
         return new ResponseEntity<>(usersDtos, HttpStatus.OK);
     }
     @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserDto> getClientByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -44,7 +47,7 @@ public class UserRestController {
         return new ResponseEntity<>(userService.getById(id), HttpStatus.OK);
     }
     @PreAuthorize("hasAuthority('ADMIN')")
-    @DeleteMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -62,9 +65,9 @@ public class UserRestController {
         }
     }
 
-    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
-    @PatchMapping(value = "{id}/user", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> patchClient(@Validated(Existing.class) @PathVariable("id") Long id, @RequestBody UserDto userDto) throws DataIntegrityViolationException, EntityNotFoundException, UserException {
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PatchMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> patchUser(@Validated(Existing.class) @PathVariable("id") Long id, @RequestBody UserDto userDto) throws DataIntegrityViolationException, EntityNotFoundException, UserException {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

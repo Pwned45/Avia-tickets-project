@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "additionalCondit")
+@Table(name = "additionalcondit")
 public class Additional {
     @Id
     @Column(name = "id_add_con")
