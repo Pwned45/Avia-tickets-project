@@ -1,11 +1,13 @@
 .navbar {
   background: linear-gradient(to right, #7092f3, #05c2fd);
+  margin-bottom: 5%;
 }
 .navbar-light .navbar-brand {
   color: #fcfcfc;
   line-height: 53px;
   font-size: 35px;
   font-weight: 700;
+  text-align: left;
 }
 .navbar-text{
   color: #fcfcfc;
