@@ -1,6 +1,7 @@
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\service\BidService.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\convector\LocationMapper.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\models\Roles.java
+C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\rest\TicketsRestController.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\models\Ticket.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\rest\AuthRestController.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\transfer\TicketDetails.java
@@ -16,6 +17,7 @@ C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backe
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\security\jwt\JwtAuthenticationException.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\models\Plane.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\repos\WayRepository.java
+C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\rest\ConditionalsRestController.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\service\ChecksService.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\repos\UserRepository.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\security\jwt\JwtConfigurer.java
@@ -34,11 +36,13 @@ C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backe
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\repos\BidRepository.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\dto\AuthenticationRequestDto.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\dto\ResultTicketDto.java
+C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\dto\TicketDtoFront.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\models\Location.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\repos\ChecksRepository.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\dto\CheckDto.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\service\ConditionalsService.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\transfer\New.java
+C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\dto\Choice.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\dto\LocationDto.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\transfer\Existing.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\security\jwt\JwtTokenProvider.java
@@ -49,9 +53,11 @@ C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backe
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\models\Checks.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\security\jwt\JwtTokenFilter.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\configs\SecurityConfig.java
+C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\rest\LocationRestController.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\Aplication.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\repos\PointRepository.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\repos\TicketRepository.java
+C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\dto\ListTicketDelay.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\models\Conditionals.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\rest\UserRestController.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\service\PlaneService.java
@@ -80,5 +86,6 @@ C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backe
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\repos\LocationRepository.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\convector\TicketMapper.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\repos\query\Utils.java
+C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\exeption\TicketNoAvailability.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\repos\PlaneRepository.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\service\WayServise.java
