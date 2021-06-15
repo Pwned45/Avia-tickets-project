@@ -5,42 +5,65 @@
         <div class="row fill_height">
           <div class="col fill_height">
             <div>
-              <div  class="search_panel active">
-                <form   (ngSubmit)="onSubmit()" #filterForm="ngForm"
+              <div class="search_panel active">
+                <form (ngSubmit)="onSubmit()" #filterForm="ngForm"
                       class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                  <div  class="search_item">
-                    <div >откуда</div>
-                    <select  class="destination search_input"
-                             required="required">
-                      <option *ngFor="let l of location">{{l.city}}</option>
+                  <div class="search_item">
+                    <div>откуда</div>
+                    <select class="destination search_input"
+                            required="required"
+                            [(ngModel)]="params!.cityStart"
+                            #cityStart="ngModel"
+                            name="cityStart">
+                      <option *ngFor="let l of location"
+                              value="{{l.city}}">{{l.city}}</option>
                     </select>
-<!--                    <input type="text" class="destination search_input" required="required">-->
+                    <!--                    <input type="text" class="destination search_input" required="required">-->
                   </div>
-                  <div  class="search_item">
+                  <div class="search_item">
                     <div>куда</div>
-                    <select   class="destination search_input"
-                             required="required">
-                      <option *ngFor="let l of location">{{l.city}}</option>
+                    <select class="destination search_input"
+                            required="required"
+                            [(ngModel)]="params!.cityEnd"
+                            #cityEnd="ngModel"
+                            name="cityEnd">
+                      <option *ngFor="let l of location"
+                              value="{{l.city}}">{{l.city}}</option>
                     </select>
-<!--                    <input type="text" class="destination search_input" required="required">-->
+                    <!--                    <input type="text" class="destination search_input" required="required">-->
                   </div>
                   <div class="search_item">
                     <div>когда</div>
-                    <input type="date" class="check_out search_input">
+                    <input type="date"
+                           class="check_out search_input"
+                           [(ngModel)]="params!.dateS"
+                           #dateS="ngModel"
+                           name="dateS"
+                           min="{{date | date: 'yyyy-MM-dd'}}"
+                    >
                   </div>
                   <div class="search_item">
                     <div>обратно</div>
-                    <input type="date" class="check_out search_input">
+                    <input type="date"
+                           [(ngModel)]="params!.dateE"
+                           #dateE="ngModel"
+                           name="dateE"
+                           class="check_out search_input"
+                           min="{{date | date: 'yyyy-MM-dd'}}"
+                    >
                   </div>
 
-                  <button  type="submit" class="button search_button">найти<span></span><span></span><span></span>
+                  <button type="submit" class="button search_button">найти<span></span><span></span><span></span>
                   </button>
                 </form>
               </div>
+
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
+

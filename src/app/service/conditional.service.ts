@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Conditionals} from "../model/conditionals";
 
-const CARB_API = 'http://localhost:8882/condit/';
+const CARB_API = 'https://aviatickets-3212.herokuapp.com/condit/';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };

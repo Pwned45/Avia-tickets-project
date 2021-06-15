@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Auth} from '../model/auth';
 import {Client} from "../model/client";
 
-const AUTH_API = 'http://localhost:8882/auth';
+const AUTH_API = 'https://aviatickets-3212.herokuapp.com/auth';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
