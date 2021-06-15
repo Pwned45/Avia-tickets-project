@@ -52,7 +52,7 @@ public class AuthRestController {
             }
 
             String token = jwtTokenProvider.createToken(login, user.getRoles());
-// я сказал стартуем
+// я сказал стартуем ,kz
             Map<Object, Object> response = new HashMap<>();
             response.put("id", user.getIdUser());
             response.put("role", user.getRoles());
