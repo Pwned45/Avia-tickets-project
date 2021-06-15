@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'regisrt', component: RegisrtComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'file', component: FindComponent},
+  {path: 'find', component: FindComponent},
 ];
 
 @NgModule({

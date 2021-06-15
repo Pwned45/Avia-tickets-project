@@ -26,6 +26,6 @@ export class HomepageComponent implements OnInit {
   }
 
   onSubmit() {
-    location.href = '/profile';
+    location.href = '/find';
   }
 }
