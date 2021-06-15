@@ -1,8 +1,8 @@
-import {Location} from "./location";
+import {Locat} from "./locat";
 
 export class Client{
   idUser: bigint| undefined;
-  locationDto: Location| undefined;
+  locationDto: Locat;
   roles:string| undefined;
   name:string| undefined;
   lastName:string| undefined;

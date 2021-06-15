@@ -1,31 +1,83 @@
 <div class="container text-ali">
   <div class="row main-form">
-    <form class="" method="post" action="#">
+    <div *ngIf="!isLogin; else redi">
+      <form (ngSubmit)="onSubmit()" #authForm="ngForm">
 
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label text">Имя Пользователя</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <input type="text"
+                     class="form-control text"
+                     name="username" id="username"
+                     placeholder="Введите имя пользователя"
+                     [(ngModel)]="auth.login"
+                     required
+                     minlength="4"
+                     #login="ngModel"/>
+            </div>
+            <div class="errors" *ngIf="login.invalid && login.touched">
 
-      <div class="form-group">
-        <label for="username" class="cols-sm-2 control-label text">Имя Пользователя</label>
-        <div class="cols-sm-10">
-          <div class="input-group">
-            <input type="text" class="form-control text" name="username" id="username" placeholder="Введите имя пользователя"/>
+              <div *ngIf="login.errors.minlength">Логин должен быть больше 3 символов</div>
+              <div *ngIf="login.errors.required">Введите логин</div>
+            </div>
           </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="cols-sm-2 control-label text">Пароль</label>
+          <div class="cols-md-5">
+            <div class="input-group">
+              <input type="password"
+                     class="form-control text"
+                     name="password"
+                     id="password"
+                     placeholder="Введите пароль"
+                     [(ngModel)]="auth.pass"
+                     required
+                     #pass="ngModel">
+            </div>
+            <div class="errors" *ngIf="pass.invalid && pass.touched">Введите пароль</div>
+          </div>
+        </div>
+
+
+        <div class="form-group ">
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg btn-block login-button"
+            [disabled]="!authForm.valid">Авторизация
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    <ng-template #redi>
+      <div style=" margin-left: auto; margin-right: auto; text-align: center">
+        <div style="font-size:20px ">
+          {{name}}, Вы, уже вошли!
+        </div>
+        <div style="margin-top: 4%; font-size: 20px">
+          <a style="color: #FFFFFF" [routerLink]="['']">На главную...</a>
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="password" class="cols-sm-2 control-label text">Пароль</label>
-        <div class="cols-md-5">
-          <div class="input-group">
-            <input type="password" class="form-control text" name="password" id="password" placeholder="Введите пароль" required="required"/>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="form-group ">
-        <a href="#" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Авторизация</a>
-      </div>
-
-    </form>
+    </ng-template>
   </div>
+</div>
+
+<div *ngIf="loading">
+  <div class="errors_b" style="margin-left: 30%;margin-right: 30%;"
+       *ngIf="err; else loadingBlock">
+    {{err}}</div>
+
+  <ng-template #loadingBlock>
+    <p class="load">Ожидайте, соединение с сервером...</p>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
 </div>

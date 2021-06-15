@@ -6,6 +6,7 @@ import {LoginComponent} from "./login/login.component";
 import {RegisrtComponent} from "./regisrt/regisrt.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {FindComponent} from "./find/find.component";
+import {AdminComponent} from "./admin/admin.component";
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'regisrt', component: RegisrtComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'find', component: FindComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: 'file/:start/:end/:cst/:ced', component: FindComponent},
 ];
 
 @NgModule({

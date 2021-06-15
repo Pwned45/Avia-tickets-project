@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Client} from '../model/client';
 import {Check} from "../model/check";
 
-const USER_API = 'http://localhost:8882/user/';
+const USER_API = 'https://aviatickets-3212.herokuapp.com/user/';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };

@@ -9,7 +9,7 @@ import {Choice} from "../model/choice";
 import {Ticket} from "../model/ticket";
 import {TicketDtoFront} from "../model/ticketDtoFront";
 
-const USER_API = 'http://localhost:8882/ticket/';
+const USER_API = 'https://aviatickets-3212.herokuapp.com/ticket/';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };

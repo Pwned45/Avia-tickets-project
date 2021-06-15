@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {LocationService} from "../service/location.service";
-import {Location} from "../model/location";
+import {Locat} from "../model/locat";
+import {ParametrSerch} from "../model/parametrSerch";
+import {SearchUrl} from "../model/SearchUrl";
+import {TokenStorageService} from "../service/token-storage.service";
+import {User} from "../model/user";
 
 @Component({
   selector: 'app-homepage',
@@ -8,14 +12,23 @@ import {Location} from "../model/location";
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  location: Location[]=[];
+  location: Locat[] = [];
+  params: SearchUrl;
+  date;
+  isLogin;
+  user: User;
 
-  constructor(private locationService: LocationService) {
+  constructor(private locationService: LocationService, private tokenStroage: TokenStorageService) {
+    this.date = new Date();
+    this.params = new SearchUrl();
   }
 
   ngOnInit(): void {
+    if (this.tokenStroage.getToken()) {
+      this.isLogin = true;
+      this.user = this.tokenStroage.getUser();
+    }
     this.getAllLocation();
-
   }
 
   getAllLocation() {
@@ -26,6 +39,7 @@ export class HomepageComponent implements OnInit {
   }
 
   onSubmit() {
-    location.href = '/find';
+    location.href = '/file/' + this.params.dateS + '/' + this.params.dateE + '/' + this.params.cityStart + '/' + this.params.cityEnd;
+    console.log(this.params)
   }
 }

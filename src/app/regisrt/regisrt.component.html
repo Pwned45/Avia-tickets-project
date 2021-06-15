@@ -1,81 +1,212 @@
 <div class="container text-ali">
   <div class="row main-form">
-    <form class="" method="post" action="#">
+    <div *ngIf="!isLogin; else redi">
+      <form (ngSubmit)="onSubmit()" #regForm="ngForm">
 
-      <div class="form-group">
-        <label for="firstname" class="cols-sm-2 control-label text">Ваше Имя</label>
-        <div class="cols-sm-10">
-          <div class="input-group">
-            <input type="text" class="form-control text " name="firstname" id="firstname" placeholder="Введите ваше имя"/>
+        <div class="form-group">
+          <label for="name" class="cols-sm-2 control-label text">Ваше Имя</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <input type="text"
+                     class="form-control text "
+                     pattern="[A-Za-zA-Яа-яЁё]*"
+                     required
+                     minlength="3"
+                     [(ngModel)]="client.name"
+                     #name="ngModel"
+                     name="name"
+                     id="name"
+                     placeholder="Введите ваше имя"
+              />
+            </div>
+            <div style="font-size: 15px" *ngIf="name.touched && name.invalid">
+              <div *ngIf="name.errors.required">Поле должно быть заполнено</div>
+              <div *ngIf="name.errors.minlength">
+                Имя должно состоять не менее чем из 3 символов
+              </div>
+              <div *ngIf="name.errors.pattern">Имя не должно содержать ничего кроме букв</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="lastname" class="cols-sm-2 control-label text">Ваша Фамилия</label>
-        <div class="cols-sm-10">
-          <div class="input-group">
-            <input type="text" class="form-control text " name="lastname" id="lastname" placeholder="Введите вашу фамилию"/>
+        <div class="form-group">
+          <label for="lastname" class="cols-sm-2 control-label text">Ваша Фамилия</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <input type="text"
+                     class="form-control text "
+                     pattern="[A-Za-zA-Яа-яЁё]*"
+                     required
+                     [(ngModel)]="client.lastName"
+                     minlength="4"
+                     #LastName="ngModel"
+                     name="lastname"
+                     id="lastname"
+                     placeholder="Введите вашу фамилию"/>
+            </div>
+            <div style="font-size: 15px" *ngIf="LastName.touched && LastName.invalid">
+              <div *ngIf="LastName.errors.required">Это поле должно быть заполнено</div>
+              <div *ngIf="LastName.errors.minlength">Фамилия должна быть болше 3 символов</div>
+              <div *ngIf="LastName.errors.pattern">Фамилия не должно содержать ничего кроме букв</div>
+            </div>
           </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="cols-sm-2 control-label text">Адрес Электронной Почты</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <input type="email"
+                     class="form-control text"
+                     id="email"
+                     name="email"
+                     required
+                     email
+                     [(ngModel)]="client.email"
+                     #email="ngModel"
+                     placeholder="Введите адрес электронной почты"/>
+            </div>
+            <div style="font-size: 15px" *ngIf="email.touched && email.invalid">
+              <div *ngIf="email.errors.required">Это поле должно быть заполнено</div>
+              <div *ngIf="email.errors.email">Введите корректную почту</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label text">Имя Пользователя</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <input type="text"
+                     class="form-control text"
+                     id="username"
+                     placeholder="Введите имя пользователя"
+                     name="login"
+                     required
+                     minlength="4"
+                     [(ngModel)]="client.login"
+                     #login="ngModel">
+            </div>
+            <div style="font-size: 15px" *ngIf="login.touched && login.invalid">
+              <div *ngIf="login.errors.required">Это поле должно быть заполнено</div>
+              <div *ngIf="login.errors.minlength">Логин должн быть болше 3 символов</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="city" class="cols-sm-2 control-label text">Город</label>
+          <div class="cols-sm-10">
+
+            <select class="destination search_input"
+                    required="required"
+                    id="city"
+                    [(ngModel)]="id"
+                    #cityEnd="ngModel"
+                    name="cityEnd"
+                    laceholder="Введите ваш город">
+
+              <option *ngFor="let l of locationt"
+                      value="{{l!.idLocation}}">{{l!.city}}</option>
+            </select>
+            <div style="font-size: 15px" *ngIf="cityEnd.touched && cityEnd.invalid">
+              <div *ngIf="cityEnd.errors.required">Это поле должно быть заполнено</div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+          <label for="bornday" class="cols-sm-2 control-label text">Дата рождения</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <input type="date"
+                     class="form-control text"
+                     id="bornday"
+                     name="date"
+                     max="{{dateb | date: 'yyyy-MM-dd'}}"
+                     required
+                     [(ngModel)]="client.bornDay"
+                     #date="ngModel">
+            </div>
+            <div style="font-size: 15px" *ngIf="date.touched && login.invalid">
+              <div *ngIf="date.errors.required">Это поле должно быть заполнено</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone" class="cols-sm-2 control-label text">Номер телефона</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <input type="text"
+                     class="form-control text"
+                     id="phone"
+                     placeholder="89009009090"
+                     onkeyup="this.value = this.value.replace(/[^\d]/,'');"
+                     required
+                     minlength="11"
+                     maxlength="11"
+                     name="phone"
+                     [(ngModel)]="client.phone"
+                     #phone="ngModel">
+            </div>
+            <div style="font-size: 15px" *ngIf="phone.touched && phone.invalid">
+              <div *ngIf="phone.errors.required">Это поле должно быть заполнено</div>
+              <div *ngIf="phone.errors.minlength">Должно быть 11 символов</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="cols-sm-2 control-label text">Пароль</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <input type="password"
+                     class="form-control text"
+                     id="password"
+                     placeholder="Введите пароль"
+                     required
+                     minlength="6"
+                     name="pass"
+                     [(ngModel)]="client.pass"
+                     #pass="ngModel"/>
+            </div>
+            <div style="font-size: 15px" *ngIf="pass.touched && pass.invalid">
+              <div *ngIf="pass.errors.required">Это поле должно быть заполнено</div>
+              <div *ngIf="pass.errors.minlength">Пароль должен быть более 5 символов</div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group ">
+          <button  type="submit"  class="btn btn-primary btn-lg btn-block login-button" [disabled]="!regForm.valid">Регистрация</button>
+        </div>
+
+      </form>
+    </div>
+
+    <ng-template #redi>
+      <div style=" margin-left: auto; margin-right: auto; text-align: center">
+        <div style="font-size:20px ">
+          {{name}}, Вы, уже вошли!
+        </div>
+        <div style="margin-top: 4%; font-size: 20px">
+          <a style="color: #FFFFFF" [routerLink]="['/profile']">Профиль</a>
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="email" class="cols-sm-2 control-label text">Адрес Электронной Почты</label>
-        <div class="cols-sm-10">
-          <div class="input-group">
-            <input type="text" class="form-control text" name="email" id="email" placeholder="Введите адрес электронной почты"/>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="username" class="cols-sm-2 control-label text">Имя Пользователя</label>
-        <div class="cols-sm-10">
-          <div class="input-group">
-            <input type="text" class="form-control text" name="username" id="username" placeholder="Введите имя пользователя"/>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="city" class="cols-sm-2 control-label text">Город</label>
-        <div class="cols-sm-10">
-          <div class="input-group">
-            <input type="text" class="form-control text " name="city" id="city" placeholder="Введите ваш город"/>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="phone" class="cols-sm-2 control-label text">Номер телефона</label>
-        <div class="cols-sm-10">
-          <div class="input-group">
-            <input type="text" class="form-control text" name="phone" id="phone" placeholder="Введите ваш номер телефона" required="required"/>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="password" class="cols-sm-2 control-label text">Пароль</label>
-        <div class="cols-sm-10">
-          <div class="input-group">
-            <input type="password" class="form-control text" name="password" id="password" placeholder="Введите пароль"/>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="confirm" class="cols-sm-2 control-label text">Подтверждение Пароля</label>
-        <div class="cols-sm-10">
-          <div class="input-group">
-            <input type="password" class="form-control text" name="confirm" id="confirm" placeholder="Подтвердите пароль"/>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group ">
-        <a href="#" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Регистрация</a>
-      </div>
-
-    </form>
+    </ng-template>
   </div>
 </div>
+
+<div *ngIf="loading">
+  <div class="errors_b" style="margin-left: 30%;margin-right: 30%;"
+       *ngIf="err; else loadingBlock">
+    {{err}}</div>
+  <ng-template #loadingBlock>
+    <p class="load">Ожидайте, соединение с сервером...</p>
+  </ng-template>
+</div>
+
