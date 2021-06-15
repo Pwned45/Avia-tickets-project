@@ -1,36 +1,46 @@
 <div class="">
-<div class="super_container">
-  <div class="search">
-    <div class="container fill_height">
-      <div class="row fill_height">
-        <div class="col fill_height">
-<div>
-  <div class="search_panel active">
-    <form action="#" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-      <div class="search_item">
-        <div>откуда</div>
-        <input type="text" class="destination search_input" required="required">
-      </div>
-      <div class="search_item">
-        <div>куда</div>
-        <input type="text" class="destination search_input" required="required">
-      </div>
-      <div class="search_item">
-        <div>когда</div>
-        <input type="date" class="check_out search_input" >
-      </div>
-      <div class="search_item">
-        <div>обратно</div>
-        <input type="date" class="check_out search_input" >
-      </div>
+  <div class="super_container">
+    <div class="search">
+      <div class="container fill_height">
+        <div class="row fill_height">
+          <div class="col fill_height">
+            <div>
+              <div  class="search_panel active">
+                <form   (ngSubmit)="onSubmit()" #filterForm="ngForm"
+                      class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                  <div  class="search_item">
+                    <div >откуда</div>
+                    <select  class="destination search_input"
+                             required="required">
+                      <option *ngFor="let l of location">{{l.city}}</option>
+                    </select>
+<!--                    <input type="text" class="destination search_input" required="required">-->
+                  </div>
+                  <div  class="search_item">
+                    <div>куда</div>
+                    <select   class="destination search_input"
+                             required="required">
+                      <option *ngFor="let l of location">{{l.city}}</option>
+                    </select>
+<!--                    <input type="text" class="destination search_input" required="required">-->
+                  </div>
+                  <div class="search_item">
+                    <div>когда</div>
+                    <input type="date" class="check_out search_input">
+                  </div>
+                  <div class="search_item">
+                    <div>обратно</div>
+                    <input type="date" class="check_out search_input">
+                  </div>
 
-      <button class="button search_button">найти<span></span><span></span><span></span></button>
-    </form>
-  </div>
-</div>
-</div>
+                  <button  type="submit" class="button search_button">найти<span></span><span></span><span></span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-  </div>

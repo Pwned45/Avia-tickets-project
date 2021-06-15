@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LocationService} from "../service/location.service";
+import {Location} from "../model/location";
 
 @Component({
   selector: 'app-homepage',
@@ -6,10 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  location: Location[]=[];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private locationService: LocationService) {
   }
 
+  ngOnInit(): void {
+    this.getAllLocation();
+
+  }
+
+  getAllLocation() {
+    this.locationService.getAllLocations().subscribe(date => {
+      this.location = date;
+      console.log(date);
+    })
+  }
+
+  onSubmit() {
+    location.href = '/profile';
+  }
 }
