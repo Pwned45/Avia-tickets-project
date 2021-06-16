@@ -1,1 +1,1 @@
-web: npm -Dserver.port=$PORT  start 
+web: npm start 
