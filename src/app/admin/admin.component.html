@@ -1,1 +1,165 @@
-<p>admin works!</p>
+<!--Пользователи-->
+<div class="container">
+  <div class="search_tabs_container">
+    <div
+      class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+      <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+        <span>Пользователи</span></div>
+    </div>
+  </div>
+  <div class="container container_class_border">
+    <div class="row justify-content-center">
+      <div class="container">
+      </div>
+    </div>
+    <table class="table table-bordered ">
+      <tr>
+        <th>id</th>
+        <th>Имя</th>
+        <th>Логин</th>
+        <th>Адрес электронной почты</th>
+        <th>Дата Рождения</th>
+      </tr>
+      <tr>
+        <th>1</th>
+        <td>Вася</td>
+        <td>rasteg</td>
+        <td>vasyya@006.tu</td>
+        <td>22.01.2000</td>
+        <td>
+          <button type="button" class="btn4 btn-lg">Удалить</button>
+        </td>
+      </tr>
+    </table>
+    <!--Контейнер подбилета-->
+
+  </div>
+</div>
+<!--Добавление Билетов-->
+<div class="container">
+  <div class="search_tabs_container">
+    <div
+      class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+      <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+        <span>Добавление Билета</span></div>
+    </div>
+  </div>
+  <div class="container container_class_border">
+    <div class="row justify-content-center">
+      <form (ngSubmit)="onSubmit()" #authForm="ngForm">
+
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label text">Имя Пользователя</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <input type="text"
+                     class="form-control text"
+                     name="username" id="username"
+                     placeholder="Введите имя пользователя"
+                     required
+                     minlength="4"/>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="cols-sm-2 control-label text">Пароль</label>
+          <div class="cols-md-5">
+            <div class="input-group">
+              <input type="text"
+                     class="form-control text"
+                     name="password"
+                     id="password"
+                     placeholder="Введите пароль"
+
+                     required>
+            </div>
+          </div>
+        </div>
+
+        <label for="username" class="cols-sm-2 control-label text">Имя Пользователя</label>
+        <div class="cols-sm-10">
+          <div class="input-group">
+            <input type="text"
+                   class="form-control text"
+                   name="username" id="username"
+                   placeholder="Введите имя пользователя"
+                   required
+                   minlength="4"/>
+          </div>
+
+        </div>
+
+        <div class="form-group ">
+          <button
+            type="submit"
+            class="btn btn2 btn-success btn-block login-button"
+            [disabled]="!authForm.valid">Добавить Билет
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--Билеты-->
+  <div class="container">
+    <div class="search_tabs_container">
+      <div
+        class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+        <div
+          class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+          <span>Билеты</span></div>
+      </div>
+    </div>
+    <div class="container container_class_border">
+      <div class="row justify-content-center">
+        <!--Контейнер поиска-->
+        <div class="container">
+        </div>
+      </div>
+      <!--Контейнер билета-->
+      <div class="search_tabs_container">
+        <div
+          class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+          <div
+            class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+            <span>билет#</span></div>
+        </div>
+      </div>
+      <div class="row justify-content-center container_class_border">
+        <div class="container">
+          <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
+          <span class="price" contenteditable>Price</span>
+          <button type="button" class="btn btn3 btn-danger">Удалить</button>
+          <button type="button" class="btn btn3 btn-warning">Изменить</button>
+          <form (ngSubmit)="onSubmit()" #authForm="ngForm">
+            <table class="table table-borderless">
+              <tr>
+                <td>Воронеж - Москва</td>
+                <td></td>
+                <td>Аэропорт</td>
+              </tr>
+              <tr>
+                <td>Дата отправки</td>
+                <td>
+                  <input type="text"
+                         name="username" id="date_start"
+                         value="20.01.2001 21:15"
+                         minlength="4"
+                  /></td>
+                <td>Домодедово - Другой</td>
+              </tr>
+              <tr>
+                <td>Дата прибытия</td>
+                <td><input type="text"
+                           name="username" id="date_end"
+                           value="20.01.2001 21:15"
+                           minlength="4"
+                /></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
