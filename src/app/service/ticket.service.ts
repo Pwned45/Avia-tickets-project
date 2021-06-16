@@ -33,7 +33,8 @@ export class TicketService {
   getUniqe(idUser: bigint): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(USER_API + idUser + '/uniqe', httpOptions);
   }
-  getById(idT: bigint): Observable<Ticket> {
+
+    getById(idT: number): Observable<Ticket> {
     return this.http.get<Ticket>(USER_API + idT , httpOptions);
   }
 

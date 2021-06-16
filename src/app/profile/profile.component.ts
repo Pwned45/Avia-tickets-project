@@ -34,10 +34,6 @@ export class ProfileComponent implements OnInit {
       this.user = this.tokenStorage.getUser();
       this.getClient();
       this.getAllLocation();
-      this.ticket.getById(this.user.id).subscribe(data=>{
-        console.log(data)
-      });
-
     }
     if (!(this.err === '')) {
       this.flag = false;

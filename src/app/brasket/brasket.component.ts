@@ -7,6 +7,7 @@ import {Choice} from "../model/choice";
 import {User} from "../model/user";
 import {Conditionals} from "../model/conditionals";
 import {Card} from "../model/Card";
+import {Ticket} from "../model/ticket";
 
 @Component({
   selector: 'app-brasket',
@@ -16,6 +17,7 @@ import {Card} from "../model/Card";
 export class BrasketComponent implements OnInit {
   choise: Choice;
   card: Card;
+  ticketsArr: Ticket[] = [];
   condits: Conditionals[];
   ids: string;
   price: string;
@@ -35,7 +37,9 @@ export class BrasketComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.ids = params.ids;
       this.price = params.price
-      this.getAllCondit()
+      this.getIds();
+      this.getAllCondit();
+      this.getAllTickets();
       if (this.tokenStorage.getToken()) {
         this.isLogin = true;
         this.user = this.tokenStorage.getUser();
@@ -49,16 +53,33 @@ export class BrasketComponent implements OnInit {
     this.condits = this.condits.filter(obj => obj.idAdc != id);
   }
 
+  getAllTickets() {
+    for (let i = 0; i < this.arrB.length; i++) {
+      this.ticketSev.getById(this.arrB[i]).subscribe(data => {
+        this.ticketsArr.push(data)
+      });
+    }
+    console.log(this.ticketsArr)
+  }
+
   onSubmit() {
-    debugger
-    this.choise.conditionals = this.arrCon;
-    this.choise.idTickets = this.getIds();
-    this.choise.userDtoId = this.user.id;
-    this.choise.info = new Date().toDateString();
-    this.choise.card_number=""
-    this.choise.card_number += this.card.owner + " ";
-    this.choise.card_number += this.card.ccv + " ";
-    console.log(this.choise)
+
+    this.choise.idTickets = this.arrB;
+    if(this.arrB.length>0){
+      this.choise.conditionals = this.arrCon;
+      this.choise.userDtoId = this.user.id;
+      this.choise.info = new Date().toDateString();
+      this.choise.card_number = ""
+      this.choise.card_number += this.card.card + " ";
+      this.choise.card_number += this.card.owner + " ";
+      this.choise.card_number += this.card.ccv + " ";
+      this.choise.card_number += this.card.dayM + " ";
+      this.choise.card_number += this.card.dayE;
+      console.log(this.choise)
+    }else {
+      alert("Вы удалили все билеты, покупка не возможна")
+    }
+
     // this.ticketSev.buy(this.choise).subscribe(data => {
     //   this.mess = data.mess
     // }, error => {
@@ -66,6 +87,12 @@ export class BrasketComponent implements OnInit {
     //   console.log(error)
     // })
   }
+
+  setTicket(id) {
+    this.ticketsArr = this.ticketsArr.filter(obj => obj.idTicket != id);
+    this.arrB = this.arrB.filter(obj => obj != id)
+  }
+
 
   getAllCondit() {
     this.conidSev.getAllConditionals().subscribe(data => {
@@ -82,9 +109,4 @@ export class BrasketComponent implements OnInit {
     }
     return this.arrB;
   }
-
-  //
-  // onSubmit() {
-  //
-  // }
 }
