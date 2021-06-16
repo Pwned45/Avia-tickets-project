@@ -13,7 +13,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng 2e2",
-    "heroku-postbuild": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --prod --build-optimizer"
+    "heroku-postbuild": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --prod --build-optimizer"
   },
   "private": true,
   "dependencies": {
