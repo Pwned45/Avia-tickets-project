@@ -94,7 +94,7 @@ export class FindComponent implements OnInit {
   }
 
   doFilterbyDelayDur() {
-    debugger
+
     if (this.fromRes) {
       this.res = this.fromRes.result.sort((a, b) => (this.getDayBydelay(a.delay[0], a.delay[a.delay.length - 1]) < this.getDayBydelay(b.delay[0], b.delay[b.delay.length - 1])) ? 1 : -1)
       this.fromRes.result = this.res;
@@ -200,7 +200,6 @@ export class FindComponent implements OnInit {
     return new Date(s) > new Date(s1)
   }
   getIds(list:Ticket[]):string{
-    debugger
     this.idsList="";
     for (let i = 0; i < list.length; i++) {
       if(i+1==list.length){

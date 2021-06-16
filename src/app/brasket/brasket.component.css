@@ -1,4 +1,13 @@
-
+.noaval{
+  text-align: center;
+  font-size: 30px;
+  color: #AF1C1C;
+}
+.custl {
+  text-align: center;
+  font-size: 30px;
+  text-decoration: none;
+}
 .container_class_border {
 
   border: 8px solid #7092f3;

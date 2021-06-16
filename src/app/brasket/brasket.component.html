@@ -4,7 +4,7 @@
 <script src="https://bootstraptema.ru/snippets/form/2017/jquery.payform.min.js"></script>
 <script src="https://bootstraptema.ru/snippets/form/2017/script.js"></script>
 
-<div class="container">
+<div class="container" *ngIf="isLogin;else el">
   <div class="search_tabs_container">
     <div
       class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
@@ -33,24 +33,24 @@
         <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
         <span class="price">322</span>
         <button type="button" class="btn btn3 btn-danger">Убрать из Корзины</button>
-        <form (ngSubmit)="onSubmit()" #authForm="ngForm">
-          <table class="table table-borderless">
-            <tr>
-              <td>Воронеж - Москва</td>
-              <td></td>
-              <td>Аэропорт</td>
-            </tr>
-            <tr>
-              <td>Дата отправки</td>
-              <td> 21.01.2001 21:15</td>
-              <td>Домодедово - Другой</td>
-            </tr>
-            <tr>
-              <td>Дата прибытия</td>
-              <td>20.01.2001 21:15</td>
-            </tr>
-          </table>
-        </form>
+
+        <table class="table table-borderless">
+          <tr>
+            <td>Воронеж - Москва</td>
+            <td></td>
+            <td>Аэропорт</td>
+          </tr>
+          <tr>
+            <td>Дата отправки</td>
+            <td> 21.01.2001 21:15</td>
+            <td>Домодедово - Другой</td>
+          </tr>
+          <tr>
+            <td>Дата прибытия</td>
+            <td>20.01.2001 21:15</td>
+          </tr>
+        </table>
+
       </div>
     </div>
     <table class="table table-borderless">
@@ -59,10 +59,12 @@
         <th>Цена</th>
         <th></th>
       </tr>
-      <tr>
-        <td>Туалет</td>
-        <td>10 рублей</td>
-        <td><button type="button" class="btn btn4">Добавить</button></td>
+      <tr *ngFor="let con of condits">
+        <td>{{con.title}}</td>
+        <td>{{con.price}}</td>
+        <td>
+          <button type="button" class="btn btn4" (click)="onclickCon(con.idAdc)">Добавить</button>
+        </td>
       </tr>
     </table>
     <div class="container">
@@ -72,24 +74,44 @@
           <h1>Введите данные карты</h1>
         </div>
         <div class="payment">
-          <form>
+          <form (ngSubmit)="onSubmit()" #cardF="ngForm">
             <div class="form-group owner">
               <label for="owner">Владелец</label>
-              <input type="text" class="form-control" id="owner">
+              <input type="text"
+                     class="form-control"
+                     id="owner"
+                     name="owner"
+                     required="required"
+                     min="5"
+                     [(ngModel)]="card.owner"
+                     #owner="ngModel">
             </div>
             <div class="form-group CVV">
               <label for="cvv">CVV</label>
-              <input type="text" class="form-control" id="cvv">
+              <input type="text"
+                     class="form-control"
+                     [(ngModel)]="card.ccv"
+                     required="required"
+                     #cvv="ngModel"
+                     name="cvv"
+                     id="cvv">
             </div>
             <div class="form-group" id="card-number-field">
               <label for="cardNumber">Номер Карты</label>
-              <input type="text" class="form-control" id="cardNumber">
+              <input type="text"
+                     required="required"
+                     class="form-control"
+                     [(ngModel)]="card.card"
+                     #cards="ngModel"
+                     name="cards"
+                     id="cardNumber">
             </div>
-            <div class="form-group" id="expiration-date">
+            <div class="form-group"
+                 id="expiration-date">
               <label>Окончание Действия</label>
               <select>
                 <option value="01">January</option>
-                <option value="02">February </option>
+                <option value="02">February</option>
                 <option value="03">March</option>
                 <option value="04">April</option>
                 <option value="05">May</option>
@@ -102,12 +124,10 @@
                 <option value="12">December</option>
               </select>
               <select>
-                <option value="16"> 2019</option>
-                <option value="17"> 2020</option>
-                <option value="18"> 2021</option>
-                <option value="19"> 2022</option>
-                <option value="20"> 2023</option>
-                <option value="21"> 2024</option>
+                <option value="21"> 2021</option>
+                <option value="22"> 2022</option>
+                <option value="23"> 2023</option>
+                <option value="24"> 2024</option>
               </select>
             </div>
             <div class="form-group" id="credit_cards">
@@ -116,7 +136,7 @@
               <img src="https://bootstraptema.ru/snippets/form/2017/amex.jpg" id="amex">
             </div>
             <div class="form-group" id="pay-now">
-              <button type="submit" class="btn btn-default" id="confirm-purchase">Оплатить</button>
+              <button type="submit" class="btn btn-default" [disabled]="!cardF.valid">Оплатить</button>
             </div>
           </form>
         </div>
@@ -125,3 +145,13 @@
 
   </div>
 </div>
+<ng-template #el>
+  <div class="container">
+    <div class="row">
+      <div class="noaval">Что бы купить билет, надо войти в профиль</div>
+    </div>
+    <div class="row">
+      <a class="custl" [routerLink]="['/login']">Авторизироваться</a>
+    </div>
+  </div>
+</ng-template>
