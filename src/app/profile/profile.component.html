@@ -1,1 +1,195 @@
-<p>profile works!</p>
+<div class="contents">
+  <div *ngIf="!isLogin;else prof">
+    <div class="nolog">Вы не вошли всистему</div>
+    <div style="text-align: center; margin-top: 1%; color: #2F496E; font-size: 25px">Следуйте за
+      кнопками ниже
+    </div>
+    <hr/>
+    <div class="row no-gutters">
+      <div class="col l">
+        <div class="cont">
+          <div
+            style="text-align: center; margin-top: 1%;margin-bottom: 1%; color: #2F496E; font-size: 23px">
+            Нет аккаутнта
+          </div>
+          <a style="font-size: 23px" [routerLink]="['/regisrt']"
+             class="btn btn-primary one">Зарегистрироваться</a>
+        </div>
+        <div class="cont">
+          <div
+            style="text-align: center; margin-top: 1%;margin-bottom: 1%; color: #2F496E; font-size: 23px">
+            Есть аккаунт
+          </div>
+          <a style="font-size: 23px" [routerLink]="['/login']"
+             class="btn btn-primary one">Войти</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <ng-template #prof>
+    <div class="row no-gutters">
+      <div class="col-sm-8">
+        <div class="row" style="margin-bottom: 5%">
+          <form class="formu" (ngSubmit)="onSubmit()" #userForm="ngForm">
+            <div class="cont">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label text">Имя</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <input type="text"
+                               class="form-control text"
+                               id="name"
+                               placeholder="Введите пароль"
+                               required
+                               minlength="3"
+                               name="name"
+                               [(ngModel)]="client.name"
+                               #name="ngModel"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="lastname" class="cols-sm-2 control-label text">Фамилия</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <input type="text"
+                               class="form-control text"
+                               id="lastname"
+                               placeholder="Введите пароль"
+                               required
+                               minlength="6"
+                               name="lastname"
+                               [(ngModel)]="client.lastName"
+                               #lastname="ngModel"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="dateBorn" class="cols-sm-2 control-label text">Год рождения</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <input type="date"
+                               class="form-control text"
+                               id="dateBorn"
+                               placeholder="Введите пароль"
+                               required
+                               minlength="6"
+                               name="dateBorn"
+                               [(ngModel)]="client.bornDay"
+                               #dateBorn="ngModel"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="city" class="cols-sm-2 control-label text">Город</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <select class="form-control text"
+                                id="city"
+                                required="required"
+                                [(ngModel)]="client!.locationDto.idLocation"
+                                #cityEnd="ngModel"
+                                name="cityEnd">
+                          <option *ngFor="let l of location"
+                                  value="{{l.idLocation}}">{{l.city}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="login" class="cols-sm-2 control-label text">Пароль</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <input type="text"
+                               class="form-control text"
+                               id="login"
+                               required
+                               name="login"
+                               [(ngModel)]="client.login"
+                               #login="ngModel"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label text">Почта</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <input type="email"
+                               class="form-control text"
+                               id="email"
+                               required
+                               name="email"
+                               [(ngModel)]="client.email"
+                               #email="ngModel"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="phone" class="cols-sm-2 control-label text">Телефон</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <input type="phone"
+                               class="form-control text"
+                               id="phone"
+                               onkeyup="this.value = this.value.replace(/[^\d]/,'');"
+                               required
+                               minlength="11"
+                               maxlength="11"
+                               name="phone"
+                               [(ngModel)]="client.phone"
+                               #phone="ngModel"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="Role" class="cols-sm-2 control-label text">Роль</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <div
+                               class="form-control text"
+                               id="Role">{{client.roles}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col" style="text-align: center">
+                  <button class="btn btn-primary text" type="submit" [disabled]="!userForm.valid">
+                    Изменить
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row" style="margin-left: 4%">
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

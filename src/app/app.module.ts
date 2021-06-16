@@ -14,6 +14,7 @@ import {RegisrtComponent} from "./regisrt/regisrt.component";
 import {LoginComponent} from "./login/login.component";
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
+import {authInterceptorProviders} from "./AuthInterceptor/AuthInterceptor";
 import {AdminComponent} from "./admin/admin.component";
 
 @NgModule({
@@ -35,7 +36,7 @@ import {AdminComponent} from "./admin/admin.component";
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
