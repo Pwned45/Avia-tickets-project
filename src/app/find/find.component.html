@@ -1,2 +1,17 @@
 <p>find works!</p>
-<p>{{f}}</p>
+<!--<p>{{f}}</p>-->
+<div *ngIf="!err;else el">
+  <div *ngFor="let node of toRes.result">
+    {{node.countOfDelay}}
+    {{node.delay}}
+    <div *ngFor="let t of node.ticketDtoList">
+      {{t.idTicket}}
+      {{t.wayDto.pointFirstDto.locationDto.city}}
+      {{t.wayDto.pointEndDto.locationDto.city}}
+    </div>
+  </div>
+</div>
+<ng-template #el>
+  {{err}}
+</ng-template>
+<button (click)="doFilterbyDelay()">dsadas</button>

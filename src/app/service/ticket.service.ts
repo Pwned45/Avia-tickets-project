@@ -17,13 +17,13 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class ClientsService {
+export class TicketService {
 
   constructor(private http: HttpClient) {
   }
 
   getTicketsS(param: ParametrSerch): Observable<ResultTicketDto> {
-    return this.http.post<ResultTicketDto>(USER_API + "all", httpOptions);
+    return this.http.post<ResultTicketDto>(USER_API + "all",param, httpOptions);
   }
 
   buy(choice: Choice): Observable<any> {

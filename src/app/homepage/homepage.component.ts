@@ -38,8 +38,17 @@ export class HomepageComponent implements OnInit {
     })
   }
 
+  getDate(date: string): Date {
+    return new Date(date);
+  }
+
   onSubmit() {
-    location.href = '/file/' + this.params.dateS + '/' + this.params.dateE + '/' + this.params.cityStart + '/' + this.params.cityEnd;
+    if (this.params.dateE == null) {
+      this.params.dateE="0";
+      location.href = '/file/' + this.params.dateS + '/' + this.params.dateE + '/' + this.params.cityStart + '/' + this.params.cityEnd;
+    }else {
+      location.href = '/file/' + this.params.dateS + '/' + this.params.dateE + '/' + this.params.cityStart + '/' + this.params.cityEnd;
+    }
     console.log(this.params)
   }
 }
