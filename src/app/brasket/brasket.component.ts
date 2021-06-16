@@ -6,6 +6,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {Choice} from "../model/choice";
 import {User} from "../model/user";
 import {Conditionals} from "../model/conditionals";
+import {Card} from "../model/Card";
 
 @Component({
   selector: 'app-brasket',
@@ -14,16 +15,20 @@ import {Conditionals} from "../model/conditionals";
 })
 export class BrasketComponent implements OnInit {
   choise: Choice;
+  card: Card;
   condits: Conditionals[];
   ids: string;
   price: string;
   isLogin = false;
   user: User;
   arrB: number[] = [];
-  mess=""
+  arrCon: bigint[] = [];
+  mess = ""
 
   constructor(private route: ActivatedRoute, private tokenStorage: TokenStorageService, private conidSev: ConditionalService, private ticketSev: TicketService) {
     this.choise = new Choice();
+    this.user = new User();
+    this.card = new Card();
   }
 
   ngOnInit(): void {
@@ -31,7 +36,6 @@ export class BrasketComponent implements OnInit {
       this.ids = params.ids;
       this.price = params.price
       this.getAllCondit()
-      this.getIds()
       if (this.tokenStorage.getToken()) {
         this.isLogin = true;
         this.user = this.tokenStorage.getUser();
@@ -40,16 +44,27 @@ export class BrasketComponent implements OnInit {
     });
   }
 
+  onclickCon(id: bigint) {
+    this.arrCon.push(id);
+    this.condits = this.condits.filter(obj => obj.idAdc != id);
+  }
+
   onSubmit() {
-    this.choise.idTickets=this.getIds();
-    this.choise.userDtoId=this.user.id;
-    this.choise.info=new Date().toDateString()
-    this.ticketSev.buy(this.choise).subscribe(data=>{
-      this.mess=data.mess
-    },error => {
-      this.mess=error
-      console.log(error)
-    })
+    debugger
+    this.choise.conditionals = this.arrCon;
+    this.choise.idTickets = this.getIds();
+    this.choise.userDtoId = this.user.id;
+    this.choise.info = new Date().toDateString();
+    this.choise.card_number=""
+    this.choise.card_number += this.card.owner + " ";
+    this.choise.card_number += this.card.ccv + " ";
+    console.log(this.choise)
+    // this.ticketSev.buy(this.choise).subscribe(data => {
+    //   this.mess = data.mess
+    // }, error => {
+    //   this.mess = error
+    //   console.log(error)
+    // })
   }
 
   getAllCondit() {
@@ -60,6 +75,7 @@ export class BrasketComponent implements OnInit {
   }
 
   getIds(): number[] {
+    this.arrB = []
     let arr = this.ids.split(",");
     for (let i = 0; i < arr.length; i++) {
       this.arrB.push(+arr[i]);
@@ -67,4 +83,8 @@ export class BrasketComponent implements OnInit {
     return this.arrB;
   }
 
+  //
+  // onSubmit() {
+  //
+  // }
 }
