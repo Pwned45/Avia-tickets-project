@@ -1,3 +1,4 @@
+<div class="container ">
 <div class="contents">
   <div *ngIf="!isLogin;else prof">
     <div class="nolog">Вы не вошли всистему</div>
@@ -199,4 +200,56 @@
       </div>
     </div>
   </ng-template>
+</div>
+</div>
+<div *ngIf="isLogin">
+<div class="container">
+<div class="search_tabs_container">
+  <div
+    class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+    <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+      <span>Специальные предложения:</span></div>
+  </div>
+</div>
+<div class="container container_class_border">
+  <div class="row justify-content-center">
+    <!--Контейнер поиска-->
+    <a class="textfind">Специальные предложения для вашего города:</a>
+    <div class="container">
+    </div>
+  </div>
+<div class="search_tabs_container">
+  <div
+    class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+    <div
+      class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+      <span>Билет#</span></div>
+  </div>
+</div>
+  <div class="row justify-content-center container_class_border">
+    <div class="container">
+      <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
+      <span class="price">100</span>
+      <form (ngSubmit)="onSubmit()" #authForm="ngForm">
+        <table class="table table-borderless">
+          <tr>
+            <td>Воронеж - Москва</td>
+            <td></td>
+            <td>Аэропорт</td>
+          </tr>
+          <tr>
+            <td>Дата отправки</td>
+            <td> 21.01.2001 21:15</td>
+            <td>Домодедово - Другой</td>
+          </tr>
+          <tr>
+            <td>Дата прибытия</td>
+            <td>20.01.2001 21:15</td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
 </div>
