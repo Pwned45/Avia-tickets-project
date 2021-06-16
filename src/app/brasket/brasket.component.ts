@@ -12,4 +12,7 @@ export class BrasketComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit() {
+
+  }
 }
