@@ -67,7 +67,4 @@ export class BrasketComponent implements OnInit {
     return this.arrB;
   }
 
-  onSubmit() {
-
-  }
 }
