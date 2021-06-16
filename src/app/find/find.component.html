@@ -1,72 +1,202 @@
 <div class="container ">
   <div class="search_tabs_container">
-    <div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-      <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><span>фильтры:</span></div>
-      <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">по цене</div>
-      <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">по дате</div>
-      <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">по количеству пересадок</div>
-      <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">по длительности пересадок</div>
-    </div>
-  </div>
-<div class="container container_class_border">
-  <div class="row justify-content-center">
-    <!--Контейнер поиска-->
-    <div class ="container">
-    </div>
-  </div>
-  <!--Контейнер билета-->
-  <div class="search_tabs_container">
-    <div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-      <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><span>билет1</span></div>
-    </div>
-  </div>
-  <div class="row justify-content-center container_class_border">
-    <div class ="container">
-      <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
-      <span class = "price">Price</span>
-      <button type="button" class="btn btn-success">Купить</button>
-      <table class="table table-borderless">
-        <tr>
-          <td>Воронеж - Москва</td>
-          <td>Дата</td>
-          <td>Аэропорт</td>
-          <td>Посадочное место</td>
-        </tr>
-        <tr>
-          <td>21:05-21:15</td>
-          <td>20.01.2000 - 20.01.2001</td>
-          <td>Домодедово - Другой</td>
-          <td>ряд : 1 место : 1</td>
-        </tr>
-      </table>
-      <!--Контейнер подбилета-->
-      <div class="search_tabs_container">
-        <div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-          <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><span>подбилет1</span></div>
-        </div>
+    <div
+      class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+      <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+        <span>фильтры:</span></div>
+      <div (click)="doFilterbyPrice()"
+           class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">по
+        цене
       </div>
-      <div class="row justify-content-center container_class_border">
-        <div class ="container">
-          <!--Дата отправки Дата прибытия Начальная Точка Конечная точка Место Цена-->
-          <span class = "price">Price</span>
-          <table class="table table-borderless">
-            <tr>
-              <td>Воронеж - Москва</td>
-              <td>Дата</td>
-              <td>Аэропорт</td>
-              <td>Посадочное место</td>
-              </tr>
-            <tr>
-              <td>21:05-21:15</td>
-              <td>20.01.2000 - 20.01.2001</td>
-              <td>Домодедово - Другой</td>
-              <td>ряд : 1 место : 1</td>
-            </tr>
-          </table>
-        </div>
+      <div (click)="doFilterDate()"
+           class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">по
+        дате
       </div>
+      <div (click)="doFilterbyDelay()"
+           class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">по
+        количеству пересадок
+      </div>
+      <div (click)="doFilterbyDelayDur()"
+           class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">по
+        длительности пересадок
+      </div>
+    </div>
+  </div>
+  <div class="container container_class_border">
+    <div class="row justify-content-center">
+      <!--Контейнер поиска-->
+      <div class="container">
+      </div>
+    </div>
+    <!--Контейнер билета-->
+    <div *ngIf="toRes;else tore">
+    <div *ngFor="let node of toRes.result">
+      <div style="margin-top: 3%">
+        <div class="search_tabs_container">
+          <div
+            class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+            <div
+              class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+              <span>Путь</span></div>
+          </div>
+        </div>
+        <div class="row justify-content-center container_class_border">
+          <div class="container">
+            <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
+            <span class="price">{{getPrice(node.ticketDtoList)}}₽</span>
+            <a [routerLink]="['/brasket/'+getIds(node.ticketDtoList)+'/'+getPrice(node.ticketDtoList)]" type="button"
+               class="btn btn-success">Купить</a>
 
+            <table class="table table-borderless">
+              <tr>
+                <!--                <td>Воронеж - Москва</td>-->
+                <td>{{node.ticketDtoList[0].wayDto.pointFirstDto.locationDto.city}}
+                  - {{node.ticketDtoList[node.ticketDtoList.length - 1].wayDto.pointEndDto.locationDto.city}}</td>
+                <td>Дата</td>
+                <td>Количество пересадок</td>
+                <td>Длительность пересадок</td>
+              </tr>
+              <tr>
+                <td>{{node.ticketDtoList[0].startDate| date: 'HH:mm'}}
+                  - {{node.ticketDtoList[node.ticketDtoList.length - 1].endDate| date: 'HH:mm'}}</td>
+                <td>{{node.ticketDtoList[0].startDate| date: 'yyyy.MM.dd'}}
+                  - {{node.ticketDtoList[node.ticketDtoList.length - 1].endDate| date: 'yyyy.MM.dd'}}</td>
+                <td>{{node.countOfDelay}}</td>
+
+                <td
+                  *ngIf="node.countOfDelay.valueOf()>0;else el">{{parseTime(node.delay[0], node.delay[node.delay.length - 1])}}</td>
+                <ng-template #el>
+                  <td>нет задержки</td>
+                </ng-template>
+              </tr>
+            </table>
+            <!--            Контейнер подбилета-->
+            <div *ngFor="let ticket of node.ticketDtoList">
+              <div style="margin-top: 2%" class="search_tabs_container">
+                <div
+                  class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                  <div
+                    class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                    <span>Билет</span></div>
+                </div>
+              </div>
+              <div class="row justify-content-center container_class_border">
+                <div class="container">
+                  <!--Дата отправки Дата прибытия Начальная Точка Конечная точка Место Цена-->
+                  <span class="price">{{ticket.price}} ₽</span>
+                  <table class="table table-borderless">
+                    <tr>
+                      <td>{{ticket.wayDto.pointFirstDto.locationDto.city}}
+                        - {{ticket.wayDto.pointEndDto.locationDto.city}} </td>
+                      <td>Дата</td>
+                      <td>Аэропорт</td>
+                      <!--                      <td>Посадочное место</td>-->
+                    </tr>
+                    <tr>
+                      <td>{{ticket.startDate| date: 'HH:mm'}} - {{ticket.endDate| date: 'HH:mm'}}</td>
+                      <td>{{ticket.startDate| date: 'yyyy.MM.dd'}}
+                        - {{ticket.endDate| date: 'yyyy.MM.dd'}}</td>
+                      <td>{{ticket.wayDto.pointFirstDto.airport}} - {{ticket.wayDto.pointEndDto.airport}}</td>
+                      <!--                      <td>ряд : {{ticket.seatDto.row}} место : {{ticket.seatDto.numberSeat}}</td>-->
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    </div>
+    <ng-template #tore>
+      <div style="font-size: 20px;text-align: center">По таким фильтрам билетов не найдено</div>
+    </ng-template>
+    <hr/>
+    <div *ngIf="fromRes;else frel">
+      <div style="font-size: 20px;text-align: center">
+        Билеты в обратную сторону
+      </div>
+      <div *ngFor="let noder of fromRes.result">
+        <div style="margin-top: 3%">
+          <div class="search_tabs_container">
+            <div
+              class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+              <div
+                class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                <span>Путь</span></div>
+            </div>
+          </div>
+          <div class="row justify-content-center container_class_border">
+            <div class="container">
+              <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
+              <span class="price">{{getPrice(noder.ticketDtoList)}}₽</span>
+              <a [routerLink]="['/brasket/'+getIds(noder.ticketDtoList)+'/'+getPrice(noder.ticketDtoList)]" type="button"
+                 class="btn btn-success">Купить</a>
+
+              <table class="table table-borderless">
+                <tr>
+                  <!--                <td>Воронеж - Москва</td>-->
+                  <td>{{noder.ticketDtoList[0].wayDto.pointFirstDto.locationDto.city}}
+                    - {{noder.ticketDtoList[noder.ticketDtoList.length - 1].wayDto.pointEndDto.locationDto.city}}</td>
+                  <td>Дата</td>
+                  <td>Количество пересадок</td>
+                  <td>Длительность пересадок</td>
+                </tr>
+                <tr>
+                  <td>{{noder.ticketDtoList[0].startDate| date: 'HH:mm'}}
+                    - {{noder.ticketDtoList[noder.ticketDtoList.length - 1].endDate| date: 'HH:mm'}}</td>
+                  <td>{{noder.ticketDtoList[0].startDate| date: 'yyyy.MM.dd'}}
+                    - {{noder.ticketDtoList[noder.ticketDtoList.length - 1].endDate| date: 'yyyy.MM.dd'}}</td>
+                  <td>{{noder.countOfDelay}}</td>
+
+                  <td
+                    *ngIf="noder.countOfDelay.valueOf()>0;else el">{{parseTime(noder.delay[0], noder.delay[noder.delay.length - 1])}}</td>
+                  <ng-template #el>
+                    <td>нет задержки</td>
+                  </ng-template>
+                </tr>
+              </table>
+              <!--            Контейнер подбилета-->
+              <div *ngFor="let ticketr of noder.ticketDtoList">
+                <div style="margin-top: 2%" class="search_tabs_container">
+                  <div
+                    class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                    <div
+                      class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                      <span>Билет</span></div>
+                  </div>
+                </div>
+                <div class="row justify-content-center container_class_border">
+                  <div class="container">
+                    <!--Дата отправки Дата прибытия Начальная Точка Конечная точка Место Цена-->
+                    <span class="price">{{ticketr.price}} ₽</span>
+                    <table class="table table-borderless">
+                      <tr>
+                        <td>{{ticketr.wayDto.pointFirstDto.locationDto.city}}
+                          - {{ticketr.wayDto.pointEndDto.locationDto.city}} </td>
+                        <td>Дата</td>
+                        <td>Аэропорт</td>
+                        <!--                      <td>Посадочное место</td>-->
+                      </tr>
+                      <tr>
+                        <td>{{ticketr.startDate| date: 'HH:mm'}} - {{ticketr.endDate| date: 'HH:mm'}}</td>
+                        <td>{{ticketr.startDate| date: 'yyyy.MM.dd'}}
+                          - {{ticketr.endDate| date: 'yyyy.MM.dd'}}</td>
+                        <td>{{ticketr.wayDto.pointFirstDto.airport}} - {{ticketr.wayDto.pointEndDto.airport}}</td>
+                        <!--                      <td>ряд : {{ticket.seatDto.row}} место : {{ticket.seatDto.numberSeat}}</td>-->
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #frel>
+      <div style="font-size: 20px;text-align: center">Билетов назад не найдено</div>
+    </ng-template>
   </div>
 </div>
-</div>
+

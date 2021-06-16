@@ -35,6 +35,7 @@
                   <div class="search_item">
                     <div>когда</div>
                     <input type="date"
+                           required="required"
                            class="check_out search_input"
                            [(ngModel)]="params!.dateS"
                            #dateS="ngModel"
@@ -42,18 +43,19 @@
                            min="{{date | date: 'yyyy-MM-dd'}}"
                     >
                   </div>
-                  <div class="search_item">
+                  <div class="search_item" *ngIf="params.dateS">
                     <div>обратно</div>
                     <input type="date"
                            [(ngModel)]="params!.dateE"
                            #dateE="ngModel"
                            name="dateE"
                            class="check_out search_input"
-                           min="{{date | date: 'yyyy-MM-dd'}}"
+                           min="{{getDate(dateS.value) | date: 'yyyy-MM-dd'}}"
                     >
                   </div>
 
-                  <button type="submit" class="button search_button">найти<span></span><span></span><span></span>
+                  <button type="submit" class="button search_button"
+                          [disabled]="!filterForm.valid">найти<span></span><span></span><span></span>
                   </button>
                 </form>
               </div>
