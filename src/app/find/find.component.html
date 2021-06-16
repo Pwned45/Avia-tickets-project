@@ -29,6 +29,7 @@
       </div>
     </div>
     <!--Контейнер билета-->
+    <div *ngIf="toRes;else tore">
     <div *ngFor="let node of toRes.result">
       <div style="margin-top: 3%">
         <div class="search_tabs_container">
@@ -43,8 +44,8 @@
           <div class="container">
             <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
             <span class="price">{{getPrice(node.ticketDtoList)}}₽</span>
-              <a [routerLink]="['/brasket/'+getIds(node.ticketDtoList)]" type="button"
-                 class="btn btn-success">Купить</a>
+            <a [routerLink]="['/brasket/'+getIds(node.ticketDtoList)]" type="button"
+               class="btn btn-success">Купить</a>
 
             <table class="table table-borderless">
               <tr>
@@ -106,6 +107,96 @@
         </div>
       </div>
     </div>
+    </div>
+    <ng-template #tore>
+      <div style="font-size: 20px;text-align: center">По таким фильтрам билетов не найдено</div>
+    </ng-template>
+    <hr/>
+    <div *ngIf="fromRes;else frel">
+      <div style="font-size: 20px;text-align: center">
+        Билеты в обратную сторону
+      </div>
+      <div *ngFor="let noder of fromRes.result">
+        <div style="margin-top: 3%">
+          <div class="search_tabs_container">
+            <div
+              class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+              <div
+                class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                <span>билет1</span></div>
+            </div>
+          </div>
+          <div class="row justify-content-center container_class_border">
+            <div class="container">
+              <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
+              <span class="price">{{getPrice(noder.ticketDtoList)}}₽</span>
+              <a [routerLink]="['/brasket/'+getIds(noder.ticketDtoList)]" type="button"
+                 class="btn btn-success">Купить</a>
+
+              <table class="table table-borderless">
+                <tr>
+                  <!--                <td>Воронеж - Москва</td>-->
+                  <td>{{noder.ticketDtoList[0].wayDto.pointFirstDto.locationDto.city}}
+                    - {{noder.ticketDtoList[noder.ticketDtoList.length - 1].wayDto.pointEndDto.locationDto.city}}</td>
+                  <td>Дата</td>
+                  <td>Количество пересадок</td>
+                  <td>Длительность пересадок</td>
+                </tr>
+                <tr>
+                  <td>{{noder.ticketDtoList[0].startDate| date: 'HH:mm'}}
+                    - {{noder.ticketDtoList[noder.ticketDtoList.length - 1].endDate| date: 'HH:mm'}}</td>
+                  <td>{{noder.ticketDtoList[0].startDate| date: 'yyyy.MM.dd'}}
+                    - {{noder.ticketDtoList[noder.ticketDtoList.length - 1].endDate| date: 'yyyy.MM.dd'}}</td>
+                  <td>{{noder.countOfDelay}}</td>
+
+                  <td
+                    *ngIf="noder.countOfDelay.valueOf()>0;else el">{{parseTime(noder.delay[0], noder.delay[noder.delay.length - 1])}}</td>
+                  <ng-template #el>
+                    <td>нет задержки</td>
+                  </ng-template>
+                </tr>
+              </table>
+              <!--            Контейнер подбилета-->
+              <div *ngFor="let ticket of noder.ticketDtoList">
+                <div style="margin-top: 2%" class="search_tabs_container">
+                  <div
+                    class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                    <div
+                      class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                      <span>подбилет1</span></div>
+                  </div>
+                </div>
+                <div class="row justify-content-center container_class_border">
+                  <div class="container">
+                    <!--Дата отправки Дата прибытия Начальная Точка Конечная точка Место Цена-->
+                    <span class="price">{{ticket.price}} ₽</span>
+                    <table class="table table-borderless">
+                      <tr>
+                        <td>{{ticket.wayDto.pointFirstDto.locationDto.city}}
+                          - {{ticket.wayDto.pointEndDto.locationDto.city}} </td>
+                        <td>Дата</td>
+                        <td>Аэропорт</td>
+                        <!--                      <td>Посадочное место</td>-->
+                      </tr>
+                      <tr>
+                        <td>{{ticket.startDate| date: 'HH:mm'}} - {{ticket.endDate| date: 'HH:mm'}}</td>
+                        <td>{{ticket.startDate| date: 'yyyy.MM.dd'}}
+                          - {{ticket.endDate| date: 'yyyy.MM.dd'}}</td>
+                        <td>{{ticket.wayDto.pointFirstDto.airport}} - {{ticket.wayDto.pointEndDto.airport}}</td>
+                        <!--                      <td>ряд : {{ticket.seatDto.row}} место : {{ticket.seatDto.numberSeat}}</td>-->
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #frel>
+      <div style="font-size: 20px;text-align: center">Билетов назад не найдено</div>
+    </ng-template>
   </div>
 </div>
 
