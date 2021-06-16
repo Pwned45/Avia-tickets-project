@@ -31,16 +31,13 @@ export class FindComponent implements OnInit {
   tickres: Ticket[];
   isLogin=false;
 
-  constructor(private route: ActivatedRoute, private ticketSev: TicketService,private tokenStroage: TokenStorageService) {
+  constructor(private route: ActivatedRoute, private ticketSev: TicketService) {
     this.paramOne = new ParametrSerch();
     this.paranTwo = new ParametrSerch();
     //this.res = new ResultTicketDto();
   }
 
   ngOnInit(): void {
-    if (this.tokenStroage.getToken()) {
-      this.isLogin = true;
-    }
     this.route.params.subscribe((params: Params) => {
       this.start = params.start;
       this.end = params.end;

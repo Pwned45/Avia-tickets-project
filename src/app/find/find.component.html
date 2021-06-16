@@ -44,7 +44,7 @@
           <div class="container">
             <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
             <span class="price">{{getPrice(node.ticketDtoList)}}₽</span>
-            <a [routerLink]="['/brasket/'+getIds(node.ticketDtoList)]" type="button"
+            <a [routerLink]="['/brasket/'+getIds(node.ticketDtoList)+'/'+getPrice(node.ticketDtoList)]" type="button"
                class="btn btn-success">Купить</a>
 
             <table class="table table-borderless">
@@ -130,7 +130,7 @@
             <div class="container">
               <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
               <span class="price">{{getPrice(noder.ticketDtoList)}}₽</span>
-              <a [routerLink]="['/brasket/'+getIds(noder.ticketDtoList)]" type="button"
+              <a [routerLink]="['/brasket/'+getIds(noder.ticketDtoList)+'/'+getPrice(noder.ticketDtoList)]" type="button"
                  class="btn btn-success">Купить</a>
 
               <table class="table table-borderless">
@@ -157,7 +157,7 @@
                 </tr>
               </table>
               <!--            Контейнер подбилета-->
-              <div *ngFor="let ticket of noder.ticketDtoList">
+              <div *ngFor="let ticketr of noder.ticketDtoList">
                 <div style="margin-top: 2%" class="search_tabs_container">
                   <div
                     class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
@@ -169,20 +169,20 @@
                 <div class="row justify-content-center container_class_border">
                   <div class="container">
                     <!--Дата отправки Дата прибытия Начальная Точка Конечная точка Место Цена-->
-                    <span class="price">{{ticket.price}} ₽</span>
+                    <span class="price">{{ticketr.price}} ₽</span>
                     <table class="table table-borderless">
                       <tr>
-                        <td>{{ticket.wayDto.pointFirstDto.locationDto.city}}
-                          - {{ticket.wayDto.pointEndDto.locationDto.city}} </td>
+                        <td>{{ticketr.wayDto.pointFirstDto.locationDto.city}}
+                          - {{ticketr.wayDto.pointEndDto.locationDto.city}} </td>
                         <td>Дата</td>
                         <td>Аэропорт</td>
                         <!--                      <td>Посадочное место</td>-->
                       </tr>
                       <tr>
-                        <td>{{ticket.startDate| date: 'HH:mm'}} - {{ticket.endDate| date: 'HH:mm'}}</td>
-                        <td>{{ticket.startDate| date: 'yyyy.MM.dd'}}
-                          - {{ticket.endDate| date: 'yyyy.MM.dd'}}</td>
-                        <td>{{ticket.wayDto.pointFirstDto.airport}} - {{ticket.wayDto.pointEndDto.airport}}</td>
+                        <td>{{ticketr.startDate| date: 'HH:mm'}} - {{ticketr.endDate| date: 'HH:mm'}}</td>
+                        <td>{{ticketr.startDate| date: 'yyyy.MM.dd'}}
+                          - {{ticketr.endDate| date: 'yyyy.MM.dd'}}</td>
+                        <td>{{ticketr.wayDto.pointFirstDto.airport}} - {{ticketr.wayDto.pointEndDto.airport}}</td>
                         <!--                      <td>ряд : {{ticket.seatDto.row}} место : {{ticket.seatDto.numberSeat}}</td>-->
                       </tr>
                     </table>
