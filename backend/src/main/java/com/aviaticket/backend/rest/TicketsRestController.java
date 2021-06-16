@@ -54,6 +54,7 @@ public class TicketsRestController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }
+
     @PreAuthorize("hasAuthority('USER')or hasAuthority('ADMIN')")
     @GetMapping(value = "{id}/uniqe", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TicketDto>> getUniqe(@PathVariable("id") Long id) throws EntityNotFoundException {
@@ -84,17 +85,19 @@ public class TicketsRestController {
         ticketService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-   @PreAuthorize("hasAuthority('ADMIN')")
+
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(value = "")
-    public ResponseEntity<?> saveTicket(@Validated(New.class)@RequestBody TicketDtoFront ticketDtoFront) throws EntityNotFoundException, ParseException, IOException {
+    public ResponseEntity<?> saveTicket(@Validated(New.class) @RequestBody TicketDtoFront ticketDtoFront) throws EntityNotFoundException, ParseException, IOException {
         if (ticketDtoFront == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } else {
             ticketService.save(ticketDtoFront);
             return new ResponseEntity<>(HttpStatus.CREATED);
-       }
+        }
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
+
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TicketDto> getTicketByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         if (id == null) {

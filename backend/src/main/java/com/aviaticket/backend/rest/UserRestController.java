@@ -7,6 +7,7 @@ import com.aviaticket.backend.exeption.EntityNotFoundException;
 import com.aviaticket.backend.exeption.UserException;
 import com.aviaticket.backend.models.User;
 import com.aviaticket.backend.service.UserService;
+import com.aviaticket.backend.transfer.Details;
 import com.aviaticket.backend.transfer.Existing;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,9 @@ public class UserRestController {
         }
         return new ResponseEntity<>(usersDtos, HttpStatus.OK);
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
+
+    @JsonView(Details.class)
+    @PreAuthorize("hasAuthority('ADMIN')or hasAuthority('USER')")
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserDto> getClientByID(@PathVariable("id") Long id) throws EntityNotFoundException {
         if (id == null) {
@@ -65,7 +68,7 @@ public class UserRestController {
         }
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @PatchMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> patchUser(@Validated(Existing.class) @PathVariable("id") Long id, @RequestBody UserDto userDto) throws DataIntegrityViolationException, EntityNotFoundException, UserException {
         if (id == null) {
