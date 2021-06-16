@@ -76,6 +76,8 @@ public class UserServiceImpl implements UserService {
             }
             c.getBidDto().setTicketDtos(ticketMapper.toTicketDTOs(tickets));
             c.getBidDto().setConditionalsDtos(conditionalsMapper.toConditionalDTOs(conditionals));
+            tickets.clear();
+            conditionals.clear();
             checkDto.add(c);
         }
         return checkDto;
