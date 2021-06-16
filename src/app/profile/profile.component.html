@@ -40,6 +40,7 @@
                     <div class="cols-sm-10">
                       <div class="input-group">
                         <input type="text"
+                               pattern="[A-Za-zA-Яа-яЁё]*"
                                class="form-control text"
                                id="name"
                                placeholder="Введите пароль"
@@ -60,9 +61,10 @@
                         <input type="text"
                                class="form-control text"
                                id="lastname"
+                               pattern="[A-Za-zA-Яа-яЁё]*"
                                placeholder="Введите пароль"
                                required
-                               minlength="6"
+                               minlength="4"
                                name="lastname"
                                [(ngModel)]="client.lastName"
                                #lastname="ngModel"/>
@@ -82,7 +84,6 @@
                                id="dateBorn"
                                placeholder="Введите пароль"
                                required
-                               minlength="6"
                                name="dateBorn"
                                [(ngModel)]="client.bornDay"
                                #dateBorn="ngModel"/>
@@ -184,6 +185,12 @@
                   </button>
                 </div>
               </div>
+              <div class="row err" *ngIf="err">
+                <div class="col">
+                  {{err}}
+                </div>
+              </div>
+
             </div>
           </form>
         </div>

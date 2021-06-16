@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from "../service/token-storage.service";
 import {ClientsService} from "../service/user.service";
 import {TicketService} from "../service/ticket.service";
@@ -21,9 +21,11 @@ export class ProfileComponent implements OnInit {
   client: Client;
   name = '';
   flag = true;
-  location:Locat[];
-  constructor(private tokenStorage: TokenStorageService, private clientSev: ClientsService, private ticket: TicketService, private locationServ:LocationService) {
+  location: Locat[];
+  date: Date;
 
+  constructor(private tokenStorage: TokenStorageService, private clientSev: ClientsService, private ticket: TicketService, private locationServ: LocationService) {
+    this.date = new Date();
   }
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class ProfileComponent implements OnInit {
       this.flag = false;
     }
   }
+
   getAllLocation() {
     this.locationServ.getAllLocations().subscribe(date => {
       this.location = date;
@@ -50,7 +53,13 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  onSubmit() {
 
+  onSubmit() {
+    this.client.pass=null;
+    this.clientSev.patchClient(this.client,this.user.id).subscribe(data=>{
+      console.log(data)
+    }, error => {
+      this.err=error.message;
+    })
   }
 }

@@ -216,3 +216,9 @@ a:hover {
   background: #e0a800;
   color: white;
 }
+.err{
+  font-size: 20px;
+  color: #AF1C1C;
+  text-align: center;
+  margin-top: 10px;
+}
