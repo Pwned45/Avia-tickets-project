@@ -13,3 +13,4 @@
 * [Курсовая.pdf](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/%D0%9A%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0.pdf)
 * [отчёт по ролям](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/Otchet0705_1.docx)
 ## Сайт
+* [swagger](https://aviatickets-3212.herokuapp.com/swagger-ui/)
