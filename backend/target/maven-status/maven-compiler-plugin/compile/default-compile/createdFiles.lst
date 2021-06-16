@@ -64,6 +64,7 @@ com\aviaticket\backend\service\WayServise.class
 com\aviaticket\backend\rest\LocationRestController.class
 com\aviaticket\backend\dto\UserDto.class
 com\aviaticket\backend\repos\PointRepository.class
+com\aviaticket\backend\configs\SecurityConfig$1.class
 com\aviaticket\backend\service\sevimpl\ConditionalsServiceImpl.class
 com\aviaticket\backend\repos\query\Utils.class
 com\aviaticket\backend\exeption\UserException.class
