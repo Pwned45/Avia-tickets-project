@@ -11,7 +11,7 @@ import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
-  {path: 'brasket', component: BrasketComponent},
+  {path: 'brasket/:ids', component: BrasketComponent},
   {path: 'login', component: LoginComponent},
   {path: 'regisrt', component: RegisrtComponent},
   {path: 'profile', component: ProfileComponent},
