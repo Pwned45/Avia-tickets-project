@@ -39,6 +39,11 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
+    public List<TicketDto> getAllList() {
+        return ticketMapper.toTicketDTOs(ticketRepository.findAll());
+    }
+
+    @Override
     public ResultTicketDto findTicket(ParametrSerch parametrSerch) throws ParseException {
         List<Ticket> resTicket = new ArrayList<>();
         List<List<Ticket>> ticketList = new ArrayList<>();

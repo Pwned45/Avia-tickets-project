@@ -30,6 +30,15 @@ public class TicketsRestController {
     @Autowired
     private ChecksService checksService;
 
+    @GetMapping(value = "/ticketsAll", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TicketDto>> getAllTickets() throws ParseException {
+        List<TicketDto> res = ticketService.getAllList();
+        if (!res.isEmpty()) {
+            return new ResponseEntity<>(res, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
     @PostMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResultTicketDto> getTickets(@RequestBody ParametrSerch parametrSerch) throws ParseException {
         ResultTicketDto res = ticketService.findTicket(parametrSerch);
