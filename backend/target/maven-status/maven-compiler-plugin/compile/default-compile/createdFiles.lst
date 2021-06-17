@@ -30,7 +30,6 @@ com\aviaticket\backend\convector\LocationMapper.class
 com\aviaticket\backend\service\sevimpl\LocationServiceImpl.class
 com\aviaticket\backend\repos\ConditionalsRepository.class
 com\aviaticket\backend\service\LocationService.class
-com\aviaticket\backend\rest\WayRestComtroller.class
 com\aviaticket\backend\convector\ChecksMapperImpl.class
 com\aviaticket\backend\security\JwtUserDetailsService.class
 com\aviaticket\backend\convector\SeatMapperImpl.class
@@ -99,7 +98,6 @@ com\aviaticket\backend\convector\ChecksMapper.class
 com\aviaticket\backend\convector\WayMapperImpl.class
 com\aviaticket\backend\dto\TicketDto.class
 com\aviaticket\backend\repos\PlaneRepository.class
-com\aviaticket\backend\service\sevimpl\WayServiceImpl.class
 com\aviaticket\backend\dto\ConditionalsDto.class
 com\aviaticket\backend\dto\WayDto.class
 com\aviaticket\backend\service\ConditionalsService.class
