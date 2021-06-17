@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration configuration = new CorsConfiguration();
         List<String> urls = new ArrayList<String>(){{
             add("http://localhost:4200");
-            add("https://aviatickets-3214.herokuapp.com/");
+            add("https://aviatickets-3214.herokuapp.com");
         }};
       //  configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
         configuration.setAllowedOrigins(urls);
