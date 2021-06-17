@@ -1,11 +1,13 @@
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\service\BidService.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\convector\LocationMapper.java
+C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\rest\WayRestComtroller.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\models\Roles.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\rest\TicketsRestController.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\models\Ticket.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\rest\AuthRestController.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\transfer\TicketDetails.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\service\sevimpl\UserServiceImpl.java
+C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\service\sevimpl\WayServiceImpl.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\repos\AdditionalRepository.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\convector\ConditionalsMapper.java
 C:\Users\Artem\IdeaProjects\AviaTicet\backend\src\main\java\com\aviaticket\backend\convector\SeatMapper.java
