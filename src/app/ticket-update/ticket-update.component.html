@@ -1,0 +1,75 @@
+<div *ngIf="isLogin;else elstop">
+<div class="container">
+
+  <div class="search_tabs_container">
+    <div
+      class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+      <div
+        class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+        <span>Изменение Билета</span></div>
+    </div>
+  </div>
+  <div class="container container_class_border">
+    <div class="row justify-content-center">
+      <form (ngSubmit)="onSubmit()" #Form="ngForm">
+        <div class="form-group">
+          <label for="dateS" class="cols-sm-2 control-label text">Дата отлёта</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <input type="text"
+                     class="form-control text"
+                     name="dateS" id="dateS"
+                     placeholder="Введите имя пользователя"
+                     required
+                     [(ngModel)]="ticketF.startDate"
+                     #dateS="ngModel"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dateE" class="cols-sm-2 control-label text">Дата прилёта</label>
+          <div class="cols-md-5">
+            <div class="input-group">
+              <input type="text"
+                     class="form-control text"
+                     name="dateE"
+                     id="dateE"
+                     [(ngModel)]="ticketF.endDate"
+                     #dateE="ngModel"
+                     required="required">
+            </div>
+          </div>
+        </div>
+        <label for="price" class="cols-sm-2 control-label text">Цена</label>
+        <div class="cols-sm-10">
+          <div class="input-group">
+            <input type="number"
+                   class="form-control text"
+                   name="price"
+                   id="price"
+                   placeholder="Введите имя пользователя"
+                   required="required"
+                   [(ngModel)]="ticketF.price"
+                   #price="ngModel"/>
+          </div>
+        </div>
+        <div class="form-group ">
+          <button
+            type="submit"
+            class="btn btn2 btn-warning btn-block login-button"
+            [disabled]="!Form.valid">Изменить Билет
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<ng-template #elstop>
+  <div style="text-align: center; font-size: 30px;margin-top: 5%;color: #AF1C1C" class="row">
+    <div class="col">
+      <a style="color: #0a43e7;text-decoration: none" [routerLink]="['']">На главную...</a>
+    </div>
+  </div>
+</ng-template>

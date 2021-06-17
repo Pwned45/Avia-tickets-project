@@ -16,6 +16,7 @@ import {Ticket} from "../model/ticket";
 })
 export class BrasketComponent implements OnInit {
   choise: Choice;
+  priceres:bigint;
   card: Card;
   ticketsArr: Ticket[] = [];
   condits: Conditionals[];
@@ -111,4 +112,23 @@ export class BrasketComponent implements OnInit {
     }
     return this.arrB;
   }
+//   setPrice():bigint{
+// debugger
+//     for (let i = 0; i < this.condits.length; i++) {
+//       if(!this.priceres){
+//         this.priceres=this.condits[i].price;
+//       }else{
+//         this.priceres+=this.condits[i].price;
+//       }
+//     }
+//
+//     for (let i = 0; i < this.ticketsArr.length; i++) {
+//       if(!this.priceres){
+//         this.priceres=this.ticketsArr[i].price;
+//       }else{
+//         this.priceres+=this.ticketsArr[i].price;
+//       }
+//     }
+//     return this.priceres;
+//   }
 }

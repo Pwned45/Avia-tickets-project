@@ -7,6 +7,7 @@ import {RegisrtComponent} from "./regisrt/regisrt.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {FindComponent} from "./find/find.component";
 import {AdminComponent} from "./admin/admin.component";
+import {TicketUpdateComponent} from "./ticket-update/ticket-update.component";
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'regisrt', component: RegisrtComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'admin', component: AdminComponent},
+  {path:'ticketUp/:id',component:TicketUpdateComponent},
   {path: 'file/:start/:end/:cst/:ced', component: FindComponent},
 ];
 

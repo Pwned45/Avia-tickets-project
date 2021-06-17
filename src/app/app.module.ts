@@ -17,6 +17,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {authInterceptorProviders} from "./AuthInterceptor/AuthInterceptor";
 import {AdminComponent} from "./admin/admin.component";
 import {CollapseModule} from "ngx-bootstrap/collapse";
+import { TicketUpdateComponent } from './ticket-update/ticket-update.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {CollapseModule} from "ngx-bootstrap/collapse";
     RegisrtComponent,
     LoginComponent,
     AdminComponent,
+    TicketUpdateComponent,
   ],
     imports: [
         BrowserModule,

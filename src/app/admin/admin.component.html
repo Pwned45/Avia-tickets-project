@@ -1,197 +1,231 @@
 <!--Пользователи-->
-<div class="container">
-  <div class="search_tabs_container">
-    <div
-      class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-      <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
-        <span>Пользователи</span></div>
-    </div>
-  </div>
-  <div class="container container_class_border">
-    <div class="row justify-content-center">
-      <div class="container">
-      </div>
-    </div>
-    <table class="table table-bordered" *ngFor="let client of clients">
-      <tr>
-        <th>id</th>
-        <th>Имя</th>
-        <th>Логин</th>
-        <th>Адрес электронной почты</th>
-        <th>Дата Рождения</th>
-      </tr>
-      <tr>
-        <th>{{client.idUser}}</th>
-        <td>{{client.name}}</td>
-        <td>{{client.login}}</td>
-        <td>{{client.email}}</td>
-        <td>{{client.bornDay}}</td>
-        <td>
-          <button (click)="deleteUser(client.idUser)" type="button" class="btn4 btn-lg">Удалить</button>
-        </td>
-      </tr>
-    </table>
-    <!--Контейнер подбилета-->
-
-  </div>
-</div>
-<!--Добавление Билетов-->
-<div class="container">
-  <div class="search_tabs_container">
-    <div
-      class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-      <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
-        <span>Добавление Билета</span></div>
-    </div>
-  </div>
-  <div class="container container_class_border">
-    <div class="row justify-content-center">
-      <form (ngSubmit)="onSubmit()" #Form="ngForm">
-        <div class="form-group">
-          <label for="dateS" class="cols-sm-2 control-label text">Дата отлёта</label>
-          <div class="cols-sm-10">
-            <div class="input-group">
-              <input type="datetime-local"
-                     class="form-control text"
-                     name="dateS" id="dateS"
-                     placeholder="Введите имя пользователя"
-                     required
-                     [(ngModel)]="ticketF!.startDate"
-                     #dateS="ngModel"
-                    />
-            </div>
-
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="dateE" class="cols-sm-2 control-label text">Дата прилёта</label>
-          <div class="cols-md-5">
-            <div class="input-group">
-              <input type="datetime-local"
-                     class="form-control text"
-                     name="dateE"
-                     id="dateE"
-                     [(ngModel)]="ticketF!.endDate"
-                     #dateE="ngModel"
-                     required="required">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="count" class="cols-sm-2 control-label text">Количество билетов</label>
-          <div class="cols-md-5">
-            <div class="input-group">
-              <input type="number"
-                     class="form-control text"
-                     name="count"
-                     id="count"
-                     placeholder="Введите пароль"
-                     [(ngModel)]="ticketF!.flag"
-                     #number="ngModel"
-                     required="required">
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="way" class="cols-sm-2 control-label text">Путь</label>
-          <div class="cols-md-5">
-            <div class="input-group">
-              <input type="number"
-                     class="form-control text"
-                     name="way"
-                     id="way"
-                     placeholder="Введите пароль"
-                     [(ngModel)]="idTf"
-                     #way="ngModel"
-                     required="required">
-            </div>
-          </div>
-        </div>
-        <label for="price" class="cols-sm-2 control-label text">Цена</label>
-        <div class="cols-sm-10">
-          <div class="input-group">
-            <input type="number"
-                   class="form-control text"
-                   name="price"
-                   id="price"
-                   placeholder="Введите имя пользователя"
-                   required="required"
-                   [(ngModel)]="ticketF!.price"
-                   #price="ngModel"/>
-          </div>
-        </div>
-
-        <div class="form-group ">
-          <button
-            type="submit"
-            class="btn btn2 btn-success btn-block login-button"
-            [disabled]="!Form.valid">Добавить Билет
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <!--Билеты-->
-  <div class="container">
-    <div class="search_tabs_container">
-      <div
-        class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-        <div
-          class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
-          <span>Билеты</span></div>
-      </div>
-    </div>
-    <div class="container container_class_border">
-      <div class="row justify-content-center">
-        <!--Контейнер поиска-->
-        <div class="container">
-        </div>
-      </div>
-      <!--Контейнер билета-->
+<div *ngIf="isLogin;else els">
+  <div *ngIf="user.role=='ADMIN';else notAdmin">
+    <div class="container">
       <div class="search_tabs_container">
         <div
           class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
           <div
             class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
-            <span>билет#</span></div>
+            <span>Пользователи</span></div>
         </div>
       </div>
-      <div class="row justify-content-center container_class_border">
-        <div class="container">
-          <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
-          <span class="price" contenteditable>Price</span>
-          <button type="button" class="btn btn3 btn-danger">Удалить</button>
-          <button type="button" class="btn btn3 btn-warning">Изменить</button>
-          <form (ngSubmit)="onSubmit()" #authForm="ngForm">
-            <table class="table table-borderless">
-              <tr>
-                <td>Воронеж - Москва</td>
-                <td></td>
-                <td>Аэропорт</td>
-              </tr>
-              <tr>
-                <td>Дата отправки</td>
-                <td>
-                  <input type="text"
-                         name="username" id="date_start"
-                         value="20.01.2001 21:15"
-                         minlength="4"
-                  /></td>
-                <td>Домодедово - Другой</td>
-              </tr>
-              <tr>
-                <td>Дата прибытия</td>
-                <td><input type="text"
-                           name="username" id="date_end"
-                           value="20.01.2001 21:15"
-                           minlength="4"
-                /></td>
-              </tr>
-            </table>
+      <div class="container container_class_border">
+        <div class="row justify-content-center">
+          <div class="container">
+          </div>
+        </div>
+        <table class="table table-bordered" *ngFor="let client of clients">
+          <tr>
+            <th>id</th>
+            <th>Имя</th>
+            <th>Логин</th>
+            <th>Адрес электронной почты</th>
+            <th>Дата Рождения</th>
+          </tr>
+          <tr>
+            <th>{{client.idUser}}</th>
+            <td>{{client.name}}</td>
+            <td>{{client.login}}</td>
+            <td>{{client.email}}</td>
+            <td>{{client.bornDay}}</td>
+            <td>
+              <button (click)="deleteUser(client.idUser)" type="button" class="btn4 btn-lg">Удалить</button>
+            </td>
+          </tr>
+        </table>
+        <!--Контейнер подбилета-->
+
+      </div>
+    </div>
+    <!--Добавление Билетов-->
+    <div class="container">
+      <div class="search_tabs_container">
+        <div
+          class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+          <div
+            class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+            <span>Добавление Билета</span></div>
+        </div>
+      </div>
+      <div class="container container_class_border">
+        <div class="row justify-content-center">
+          <form (ngSubmit)="onSubmit()" #Form="ngForm">
+            <div class="form-group">
+              <label for="dateS" class="cols-sm-2 control-label text">Дата отлёта</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <input type="datetime-local"
+                         class="form-control text"
+                         name="dateS" id="dateS"
+                         placeholder="Введите имя пользователя"
+                         required="required"
+                         [(ngModel)]="ticketF!.startDate"
+                         #dateS="ngModel"
+                  />
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="dateE" class="cols-sm-2 control-label text">Дата прилёта</label>
+              <div class="cols-md-5">
+                <div class="input-group">
+                  <input type="datetime-local"
+                         class="form-control text"
+                         name="dateE"
+                         id="dateE"
+                         [(ngModel)]="ticketF!.endDate"
+                         #dateE="ngModel"
+                         required="required">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="count" class="cols-sm-2 control-label text">Количество билетов</label>
+              <div class="cols-md-5">
+                <div class="input-group">
+                  <input type="number"
+                         class="form-control text"
+                         name="count"
+                         id="count"
+                         placeholder="Введите количество билетов"
+                         [(ngModel)]="ticketF!.flag"
+                         #number="ngModel"
+                         required="required">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="way" class="cols-sm-2 control-label text">Путь</label>
+              <div class="cols-md-5">
+                <div class="input-group">
+                  <select class="form-control text"
+                          required="required"
+                          id="way"
+                          name="way"
+                          [(ngModel)]="ticketF.wayDto.idWay"
+                          #way="ngModel">
+<!--                    <option selected="null"></option>-->
+                    <option *ngFor="let w of waies"
+                            value="{{w.idWay}}">{{w.pointFirstDto.locationDto.city}} - {{w.pointEndDto.locationDto.city}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <label for="price" class="cols-sm-2 control-label text">Цена</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input type="number"
+                       class="form-control text"
+                       name="price"
+                       id="price"
+                       placeholder="Введите имя пользователя"
+                       required="required"
+                       [(ngModel)]="ticketF!.price"
+                       #price="ngModel"/>
+              </div>
+            </div>
+
+            <div class="form-group ">
+              <button
+                type="submit"
+                class="btn btn2 btn-success btn-block login-button"
+                [disabled]="!Form.valid">Добавить Билет
+              </button>
+            </div>
           </form>
+        </div>
+      </div>
+      <!--Билеты-->
+      <div class="container" style="margin-top: 5%">
+        <div class="search_tabs_container">
+          <div
+            class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+            <div
+              class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+              <span>Билеты</span></div>
+          </div>
+        </div>
+        <div class="container container_class_border">
+          <div class="row justify-content-center">
+            <!--Контейнер поиска-->
+            <div class="container">
+            </div>
+          </div>
+          <!--Контейнер билета-->
+          <div style="margin-top: 5%" *ngFor="let ticketUp of ticketsList">
+            <div class="search_tabs_container">
+              <div
+                class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                <div
+                  class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                  <span>Билет № {{ticketUp.idTicket}}</span></div>
+              </div>
+            </div>
+            <div class="row justify-content-center container_class_border">
+              <!--              <form (ngSubmit)="onSubmit()" #authForm="ngForm">-->
+              <div>
+
+                <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
+                <input class="price" style="margin-top: 1%"
+                       value="{{ticketUp.price}}">
+                <button type="button" (click)="deleteTicket(ticketUp.idTicket)" class="btn btn3 btn-danger">Удалить</button>
+                <a  [routerLink]="'/ticketUp/'+ticketUp.idTicket"  class="btn btn3 btn-warning">Изменить</a>
+                <table class="table table-borderless">
+                  <tr>
+                    <td>{{ticketUp.wayDto.pointFirstDto.locationDto.city}}
+                      - {{ticketUp.wayDto.pointEndDto.locationDto.city}}</td>
+                    <td></td>
+                    <td>Аэропорт</td>
+                  </tr>
+                  <tr>
+                    <td>Дата отправки</td>
+                    <td>
+                      {{ticketUp.startDate}}
+                    </td>
+                    <td>{{ticketUp.wayDto.pointFirstDto.airport}} - {{ticketUp.wayDto.pointEndDto.airport}}</td>
+                  </tr>
+                  <tr>
+                    <td>Дата прибытия</td>
+                    <td>
+                      {{ticketUp.endDate}}
+                    </td>
+                    <td>
+                      Количество билетов: {{ticketUp.flag}}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <ng-template #notAdmin>
+    <div style="text-align: center; font-size: 30px;margin-top: 10%;color: #AF1C1C" class="row">
+      <div class="col">
+        Вы, не являетесь администратором
+      </div>
+    </div>
+    <div style="text-align: center; font-size: 30px;margin-top: 5%;color: #AF1C1C" class="row">
+      <div class="col">
+        <a style="color: #0a43e7;text-decoration: none" [routerLink]="['']">На главную...</a>
+      </div>
+    </div>
+  </ng-template>
 </div>
+<ng-template #els>
+  <div style="text-align: center; font-size: 30px;margin-top: 10%;color: #AF1C1C" class="row">
+    <div class="col">
+      У Вас нет доступа к данной странице
+    </div>
+  </div>
+  <div style="text-align: center; font-size: 30px;margin-top: 5%;color: #AF1C1C" class="row">
+    <div class="col">
+      <a style="color: #0a43e7;text-decoration: none" [routerLink]="['']">На главную...</a>
+    </div>
+  </div>
+</ng-template>

@@ -37,12 +37,14 @@ export class TicketService {
   getById(idT: number): Observable<Ticket> {
     return this.http.get<Ticket>(USER_API + idT, httpOptions);
   }
-
+  getByIdDto(idT: number): Observable<TicketDtoFront> {
+    return this.http.get<TicketDtoFront>(USER_API + idT, httpOptions);
+  }
   getAll(): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(USER_API + "ticketsAll", httpOptions);
   }
 
-  patchTicket(ticket: Ticket): Observable<any> {
+  patchTicket(ticket: TicketDtoFront): Observable<any> {
     return this.http.patch<any>(USER_API, ticket);
   }
 
@@ -51,6 +53,7 @@ export class TicketService {
   }
 
   saveTicket(ticketF: TicketDtoFront): Observable<any> {
+    console.log(ticketF)
     return this.http.post<any>(USER_API, ticketF);
   }
 
