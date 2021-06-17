@@ -1,18 +1,15 @@
 package com.aviaticket.backend.rest;
 
 import com.aviaticket.backend.dto.CheckDto;
-import com.aviaticket.backend.dto.TicketDto;
 import com.aviaticket.backend.dto.UserDto;
 import com.aviaticket.backend.exeption.EntityNotFoundException;
 import com.aviaticket.backend.exeption.UserException;
-import com.aviaticket.backend.models.User;
 import com.aviaticket.backend.service.UserService;
 import com.aviaticket.backend.transfer.Details;
 import com.aviaticket.backend.transfer.Existing;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +17,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.List;
 
 @RestController
