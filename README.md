@@ -9,7 +9,7 @@
 * [Miro](https://miro.com/app/board/o9J_lQqL6Xc=/)
 ## Документация
 * [ТЗ](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/TZ.pdf)
-* [Курсовая.docx](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/%D0%9A%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0.docx)
+* [Курсовая.docx](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/Kursovoy_Proekt.docx)
 * [Курсовая.pdf](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/Kursovoy_Proekt.pdf)
 * [отчёт по ролям](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/Otchet0705_1.docx)
 ## Сайт
