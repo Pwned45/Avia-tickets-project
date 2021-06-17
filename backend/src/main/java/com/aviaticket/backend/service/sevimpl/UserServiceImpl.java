@@ -12,7 +12,7 @@ import com.aviaticket.backend.models.*;
 import com.aviaticket.backend.repos.LocationRepository;
 import com.aviaticket.backend.repos.UserRepository;
 import com.aviaticket.backend.service.UserService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,17 +23,17 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final ChecksMapper checksMapper;
-    private final BCryptPasswordEncoder passwordEncoder;
+//    private final BCryptPasswordEncoder passwordEncoder;
     private final LocationRepository locationRepository;
     private final TicketMapper ticketMapper;
     private final ConditionalsMapper conditionalsMapper;
 
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, ChecksMapper checksMapper, LocationRepository locationRepository, BCryptPasswordEncoder passwordEncoder, TicketMapper ticketMapper, ConditionalsMapper conditionalsMapper) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, ChecksMapper checksMapper, LocationRepository locationRepository, TicketMapper ticketMapper, ConditionalsMapper conditionalsMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
         this.checksMapper = checksMapper;
-        this.passwordEncoder = passwordEncoder;
+//        this.passwordEncoder = passwordEncoder;
         this.locationRepository = locationRepository;
         this.ticketMapper = ticketMapper;
         this.conditionalsMapper = conditionalsMapper;
@@ -120,7 +120,7 @@ public class UserServiceImpl implements UserService {
         user.setPhone(userDto.getPhone());
         user.setLogin(userDto.getLogin());
         user.setEmail(userDto.getEmail());
-        user.setPass(passwordEncoder.encode(userDto.getPass()));
+//        user.setPass(passwordEncoder.encode(userDto.getPass()));
         user.setRoles(Roles.USER);
         userRepository.save(user);
 
