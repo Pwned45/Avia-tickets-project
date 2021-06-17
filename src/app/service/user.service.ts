@@ -36,5 +36,6 @@ export class ClientsService {
   getClientChecks(idUser: bigint): Observable<Check[]> {
     return this.http.get<Check[]>(USER_API + idUser + '/checks', httpOptions);
   }
+  
 
 }

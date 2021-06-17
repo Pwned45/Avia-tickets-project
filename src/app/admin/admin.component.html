@@ -46,56 +46,87 @@
   </div>
   <div class="container container_class_border">
     <div class="row justify-content-center">
-      <form (ngSubmit)="onSubmit()" #authForm="ngForm">
-
+      <form (ngSubmit)="onSubmit()" #Form="ngForm">
         <div class="form-group">
-          <label for="username" class="cols-sm-2 control-label text">Имя Пользователя</label>
+          <label for="dateS" class="cols-sm-2 control-label text">Дата отлёта</label>
           <div class="cols-sm-10">
             <div class="input-group">
-              <input type="text"
+              <input type="datetime-local"
                      class="form-control text"
-                     name="username" id="username"
+                     name="dateS" id="dateS"
                      placeholder="Введите имя пользователя"
                      required
-                     minlength="4"/>
+                     [(ngModel)]="ticketF!.startDate"
+                     #dateS="ngModel"
+                    />
             </div>
 
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dateE" class="cols-sm-2 control-label text">Дата прилёта</label>
+          <div class="cols-md-5">
+            <div class="input-group">
+              <input type="datetime-local"
+                     class="form-control text"
+                     name="dateE"
+                     id="dateE"
+                     [(ngModel)]="ticketF!.endDate"
+                     #dateE="ngModel"
+                     required="required">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="count" class="cols-sm-2 control-label text">Количество билетов</label>
+          <div class="cols-md-5">
+            <div class="input-group">
+              <input type="number"
+                     class="form-control text"
+                     name="count"
+                     id="count"
+                     placeholder="Введите пароль"
+                     [(ngModel)]="ticketF!.flag"
+                     #number="ngModel"
+                     required="required">
+            </div>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="password" class="cols-sm-2 control-label text">Пароль</label>
+          <label for="way" class="cols-sm-2 control-label text">Путь</label>
           <div class="cols-md-5">
             <div class="input-group">
-              <input type="text"
+              <input type="number"
                      class="form-control text"
-                     name="password"
-                     id="password"
+                     name="way"
+                     id="way"
                      placeholder="Введите пароль"
-
-                     required>
+                     [(ngModel)]="idTf"
+                     #way="ngModel"
+                     required="required">
             </div>
           </div>
         </div>
-
-        <label for="username" class="cols-sm-2 control-label text">Имя Пользователя</label>
+        <label for="price" class="cols-sm-2 control-label text">Цена</label>
         <div class="cols-sm-10">
           <div class="input-group">
-            <input type="text"
+            <input type="number"
                    class="form-control text"
-                   name="username" id="username"
+                   name="price"
+                   id="price"
                    placeholder="Введите имя пользователя"
-                   required
-                   minlength="4"/>
+                   required="required"
+                   [(ngModel)]="ticketF!.price"
+                   #price="ngModel"/>
           </div>
-
         </div>
 
         <div class="form-group ">
           <button
             type="submit"
             class="btn btn2 btn-success btn-block login-button"
-            [disabled]="!authForm.valid">Добавить Билет
+            [disabled]="!Form.valid">Добавить Билет
           </button>
         </div>
       </form>
@@ -163,3 +194,4 @@
       </div>
     </div>
   </div>
+</div>

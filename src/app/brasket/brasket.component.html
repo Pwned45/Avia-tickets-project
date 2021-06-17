@@ -81,7 +81,7 @@
             <div class="form-group owner">
               <label for="owner">Владелец</label>
               <input type="text"
-                     class="form-control"
+                     class="form-control text"
                      pattern="[A-Za-zA-Яа-яЁё]*"
                      id="owner"
                      name="owner"
@@ -101,7 +101,7 @@
                      minlength="3"
                      maxlength="3"
                      onkeyup="this.value = this.value.replace(/[^\d]/,'');"
-                     class="form-control"
+                     class="form-control text"
                      [(ngModel)]="card.ccv"
                      required="required"
                      #cvv="ngModel"
@@ -117,7 +117,7 @@
               <label for="cardNumber">Номер Карты</label>
               <input type="text"
                      required="required"
-                     class="form-control"
+                     class="form-control text"
                      minlength="16"
                      maxlength="16"
                      onkeyup="this.value = this.value.replace(/[^\d]/,'');"
@@ -137,6 +137,7 @@
             >
               <label>Окончание Действия</label>
               <select
+                required="required"
                 name="dayM"
                 #dayM="ngModel"
                 [(ngModel)]="card.dayM">
@@ -154,6 +155,7 @@
                 <option value="12">December</option>
               </select>
               <select
+                required="required"
                 name="dayE"
                 #dayE="ngModel"
                 [(ngModel)]="card.dayE">
@@ -163,11 +165,11 @@
                 <option value="24"> 2024</option>
               </select>
             </div>
-            <div class="form-group" id="credit_cards">
-              <img src="https://bootstraptema.ru/snippets/form/2017/visa.jpg" id="visa">
-              <img src="https://bootstraptema.ru/snippets/form/2017/mastercard.jpg" id="mastercard">
-              <img src="https://bootstraptema.ru/snippets/form/2017/amex.jpg" id="amex">
-            </div>
+<!--            <div class="form-group" id="credit_cards">-->
+<!--              <img src="https://bootstraptema.ru/snippets/form/2017/visa.jpg" id="visa">-->
+<!--              <img src="https://bootstraptema.ru/snippets/form/2017/mastercard.jpg" id="mastercard">-->
+<!--              <img src="https://bootstraptema.ru/snippets/form/2017/amex.jpg" id="amex">-->
+<!--            </div>-->
             <div class="form-group" id="pay-now">
               <button type="submit" class="btn btn-default" [disabled]="!cardF.valid">Оплатить</button>
             </div>
@@ -177,7 +179,6 @@
     </div>
 
   </div>
-
 </div>
 <ng-template #el>
   <div class="container">

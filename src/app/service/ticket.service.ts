@@ -23,7 +23,7 @@ export class TicketService {
   }
 
   getTicketsS(param: ParametrSerch): Observable<ResultTicketDto> {
-    return this.http.post<ResultTicketDto>(USER_API + "all",param, httpOptions);
+    return this.http.post<ResultTicketDto>(USER_API + "all", param, httpOptions);
   }
 
   buy(choice: Choice): Observable<any> {
@@ -34,8 +34,12 @@ export class TicketService {
     return this.http.get<Ticket[]>(USER_API + idUser + '/uniqe', httpOptions);
   }
 
-    getById(idT: number): Observable<Ticket> {
-    return this.http.get<Ticket>(USER_API + idT , httpOptions);
+  getById(idT: number): Observable<Ticket> {
+    return this.http.get<Ticket>(USER_API + idT, httpOptions);
+  }
+
+  getAll(): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(USER_API + "ticketsAll", httpOptions);
   }
 
   patchTicket(ticket: Ticket): Observable<any> {
