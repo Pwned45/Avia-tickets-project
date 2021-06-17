@@ -50,6 +50,7 @@ export class BrasketComponent implements OnInit {
   }
 
   onclickCon(id: bigint) {
+
     this.arrCon.push(id);
     this.condits = this.condits.filter(obj => obj.idAdc != id);
   }
@@ -77,8 +78,9 @@ export class BrasketComponent implements OnInit {
       this.choise.card_number += this.card.dayM + "/";
       this.choise.card_number += this.card.dayE;
       this.ticketSev.buy(this.choise).subscribe(data => {
+        location.href = '/profile';
         this.mess = data.mess
-        location.href = '/';
+
       }, error => {
         this.mess = error
         console.log(error)
