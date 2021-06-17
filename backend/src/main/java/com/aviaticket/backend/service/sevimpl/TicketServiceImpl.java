@@ -65,7 +65,7 @@ public class TicketServiceImpl implements TicketService {
                         break;
                     }
                 } else {
-                    if (startP.getWayStart().getTicket() != null) {
+                 //   if (startP.getWayStart().getTicket() != null) {
                         if (startP.getWayStart().getTicket().getFlag() > 0) {
                             resTicket.add(startP.getWayStart().getTicket());
                             exit = false;
@@ -73,10 +73,10 @@ public class TicketServiceImpl implements TicketService {
                             resTicket.clear();
                             break;
                         }
-                    }else {
-                        resTicket.clear();
-                        break;
-                    }
+//                    }else {
+//                        resTicket.clear();
+//                        break;
+//                    }
                 }
             }
             if (!resTicket.isEmpty()) {
