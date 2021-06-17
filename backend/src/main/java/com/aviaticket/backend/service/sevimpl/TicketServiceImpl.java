@@ -65,10 +65,15 @@ public class TicketServiceImpl implements TicketService {
                         break;
                     }
                 } else {
-                    if (startP.getWayStart().getTicket().getFlag() > 0) {
-                        resTicket.add(startP.getWayStart().getTicket());
-                        exit = false;
-                    } else {
+                    if (startP.getWayStart().getTicket() != null) {
+                        if (startP.getWayStart().getTicket().getFlag() > 0) {
+                            resTicket.add(startP.getWayStart().getTicket());
+                            exit = false;
+                        } else {
+                            resTicket.clear();
+                            break;
+                        }
+                    }else {
                         resTicket.clear();
                         break;
                     }
@@ -156,7 +161,7 @@ public class TicketServiceImpl implements TicketService {
         if (ticketDto.getSeatDto().getIdSeat() > 0) {
             ticketUpdate.setSeat(seatRepository.findById(ticketDto.getSeatDto().getIdSeat()).orElseThrow(EntityNotFoundException::new));
         }
-         ticketRepository.save(ticketUpdate);
+        ticketRepository.save(ticketUpdate);
     }
 
     @Override
