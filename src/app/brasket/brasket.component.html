@@ -20,6 +20,7 @@
       </div>
     </div>
     <!--Контейнер билета-->
+    <div style="margin-top: 5%;" *ngFor="let ticket of ticketsArr">
     <div class="search_tabs_container">
       <div
         class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
@@ -42,8 +43,8 @@
           </tr>
           <tr>
             <td>Дата отправки</td>
-            <td> 21.01.2001 21:15</td>
-            <td>Домодедово - Другой</td>
+            <td> {{ticket.startDate|date:"yyyy-mm-dd HH:mm"}}</td>
+            <td>{{ticket.wayDto.pointFirstDto.airport}} - {{ticket.wayDto.pointEndDto.airport}}</td>
           </tr>
           <tr>
             <td>Дата прибытия</td>
@@ -176,6 +177,7 @@
     </div>
 
   </div>
+
 </div>
 <ng-template #el>
   <div class="container">
