@@ -29,7 +29,7 @@
       </div>
     </div>
     <!--Контейнер билета-->
-    <div *ngIf="toRes;else tore">
+    <div *ngIf="toRes.result.length>0;else tore">
     <div *ngFor="let node of toRes.result">
       <div style="margin-top: 3%">
         <div class="search_tabs_container">
@@ -112,7 +112,7 @@
       <div style="font-size: 20px;text-align: center">По таким фильтрам билетов не найдено</div>
     </ng-template>
     <hr/>
-    <div *ngIf="fromRes;else frel">
+    <div *ngIf="fromRes.result.length>0;else frel">
       <div style="font-size: 20px;text-align: center">
         Билеты в обратную сторону
       </div>

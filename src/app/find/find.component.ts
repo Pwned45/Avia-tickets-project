@@ -34,6 +34,8 @@ export class FindComponent implements OnInit {
   constructor(private route: ActivatedRoute, private ticketSev: TicketService) {
     this.paramOne = new ParametrSerch();
     this.paranTwo = new ParametrSerch();
+    this.fromRes=new ResultTicketDto();
+    this.toRes=new ResultTicketDto();
     //this.res = new ResultTicketDto();
   }
 
@@ -52,16 +54,16 @@ export class FindComponent implements OnInit {
       this.paranTwo.dateS = this.end;
 
       if (this.end == "0") {
-        this.getTicketone(this.paramOne);
+       this.getTicketone(this.paramOne);
 
       } else {
+      this.getTicketTwo(this.paranTwo);
         this.getTicketone(this.paramOne);
-        this.getTicketTwo(this.paranTwo);
       }
     });
   }
 
-  getTicketone(par: ParametrSerch): ResultTicketDto {
+  getTicketone(par: ParametrSerch) {
     console.log(par)
     this.ticketSev.getTicketsS(par).subscribe(data => {
       this.toRes = data;
@@ -70,26 +72,28 @@ export class FindComponent implements OnInit {
       this.err = error.message;
     });
     if (this.toRes.result) {
-      return this.toRes;
+    //  return this.toRes;
     } else {
       this.err = "Билетов не найдено";
-      return this.toRes;
+   //   return this.toRes;
     }
   }
 
-  getTicketTwo(par: ParametrSerch): ResultTicketDto {
+  getTicketTwo(par: ParametrSerch) {
+    debugger
     console.log(par)
     this.ticketSev.getTicketsS(par).subscribe(data => {
       this.fromRes = data;
+      console.log(par)
       console.log(data)
     }, error => {
       this.err = error.message;
     });
     if (this.fromRes.result) {
-      return this.fromRes;
+    //  return this.fromRes;
     } else {
-      this.err = "Билетов не найдено";
-      return this.fromRes;
+     this.err = "Билетов не найдено";
+   //   return this.fromRes;
     }
   }
 

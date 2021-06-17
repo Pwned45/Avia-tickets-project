@@ -35,6 +35,8 @@ export class HomepageComponent implements OnInit {
     this.locationService.getAllLocations().subscribe(date => {
       this.location = date;
       console.log(date);
+    },error => {
+      console.log(error.message)
     })
   }
 
