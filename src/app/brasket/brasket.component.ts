@@ -73,19 +73,21 @@ export class BrasketComponent implements OnInit {
       this.choise.card_number += this.card.card + " ";
       this.choise.card_number += this.card.owner + " ";
       this.choise.card_number += this.card.ccv + " ";
-      this.choise.card_number += this.card.dayM + " ";
+      this.choise.card_number += this.card.dayM + "/";
       this.choise.card_number += this.card.dayE;
+      this.ticketSev.buy(this.choise).subscribe(data => {
+        this.mess = data.mess
+        location.href = '/';
+      }, error => {
+        this.mess = error
+        console.log(error)
+      })
       console.log(this.choise)
     }else {
       alert("Вы удалили все билеты, покупка не возможна")
     }
 
-    // this.ticketSev.buy(this.choise).subscribe(data => {
-    //   this.mess = data.mess
-    // }, error => {
-    //   this.mess = error
-    //   console.log(error)
-    // })
+
   }
 
   setTicket(id) {

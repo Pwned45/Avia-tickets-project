@@ -1,255 +1,332 @@
 <div class="container ">
-<div class="contents">
-  <div *ngIf="!isLogin;else prof">
-    <div class="nolog">Вы не вошли всистему</div>
-    <div style="text-align: center; margin-top: 1%; color: #2F496E; font-size: 25px">Следуйте за
-      кнопками ниже
-    </div>
-    <hr/>
-    <div class="row no-gutters">
-      <div class="col l">
-        <div class="cont">
-          <div
-            style="text-align: center; margin-top: 1%;margin-bottom: 1%; color: #2F496E; font-size: 23px">
-            Нет аккаутнта
+  <div class="contents">
+    <div *ngIf="!isLogin;else prof">
+      <div class="nolog">Вы не вошли всистему</div>
+      <div style="text-align: center; margin-top: 1%; color: #2F496E; font-size: 25px">Следуйте за
+        кнопками ниже
+      </div>
+      <hr/>
+      <div class="row no-gutters">
+        <div class="col l">
+          <div class="cont">
+            <div
+              style="text-align: center; margin-top: 1%;margin-bottom: 1%; color: #2F496E; font-size: 23px">
+              Нет аккаутнта
+            </div>
+            <a style="font-size: 23px" [routerLink]="['/regisrt']"
+               class="btn btn-primary one">Зарегистрироваться</a>
           </div>
-          <a style="font-size: 23px" [routerLink]="['/regisrt']"
-             class="btn btn-primary one">Зарегистрироваться</a>
+          <div class="cont">
+            <div
+              style="text-align: center; margin-top: 1%;margin-bottom: 1%; color: #2F496E; font-size: 23px">
+              Есть аккаунт
+            </div>
+            <a style="font-size: 23px" [routerLink]="['/login']"
+               class="btn btn-primary one">Войти</a>
+          </div>
         </div>
-        <div class="cont">
-          <div
-            style="text-align: center; margin-top: 1%;margin-bottom: 1%; color: #2F496E; font-size: 23px">
-            Есть аккаунт
+      </div>
+
+    </div>
+    <ng-template #prof>
+      <div class="row no-gutters">
+        <div class="col-sm-8">
+          <div class="row" style="margin-bottom: 5%">
+            <form class="formu" (ngSubmit)="onSubmit()" #userForm="ngForm">
+              <div class="cont">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="name" class="cols-sm-2 control-label text">Имя</label>
+                      <div class="cols-sm-10">
+                        <div class="input-group">
+                          <input type="text"
+                                 pattern="[A-Za-zA-Яа-яЁё]*"
+                                 class="form-control text"
+                                 id="name"
+                                 placeholder="Введите пароль"
+                                 required
+                                 minlength="3"
+                                 name="name"
+                                 [(ngModel)]="client.name"
+                                 #name="ngModel"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="lastname" class="cols-sm-2 control-label text">Фамилия</label>
+                      <div class="cols-sm-10">
+                        <div class="input-group">
+                          <input type="text"
+                                 class="form-control text"
+                                 id="lastname"
+                                 pattern="[A-Za-zA-Яа-яЁё]*"
+                                 placeholder="Введите пароль"
+                                 required
+                                 minlength="4"
+                                 name="lastname"
+                                 [(ngModel)]="client.lastName"
+                                 #lastname="ngModel"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="dateBorn" class="cols-sm-2 control-label text">Год рождения</label>
+                      <div class="cols-sm-10">
+                        <div class="input-group">
+                          <input type="date"
+                                 class="form-control text"
+                                 id="dateBorn"
+                                 placeholder="Введите пароль"
+                                 required
+                                 name="dateBorn"
+                                 [(ngModel)]="client.bornDay"
+                                 #dateBorn="ngModel"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="city" class="cols-sm-2 control-label text">Город</label>
+                      <div class="cols-sm-10">
+                        <div class="input-group">
+                          <select class="form-control text"
+                                  id="city"
+                                  required="required"
+                                  [(ngModel)]="client.locationDto.idLocation"
+                                  #cityEnd="ngModel"
+                                  name="cityEnd">
+                            <option *ngFor="let l of location"
+                                    value="{{l.idLocation}}">{{l.city}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="login" class="cols-sm-2 control-label text">Логин</label>
+                      <div class="cols-sm-10">
+                        <div class="input-group">
+                          <input type="text"
+                                 class="form-control text"
+                                 id="login"
+                                 required
+                                 name="login"
+                                 [(ngModel)]="client.login"
+                                 #login="ngModel"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="email" class="cols-sm-2 control-label text">Почта</label>
+                      <div class="cols-sm-10">
+                        <div class="input-group">
+                          <input type="email"
+                                 class="form-control text"
+                                 id="email"
+                                 required
+                                 name="email"
+                                 [(ngModel)]="client.email"
+                                 #email="ngModel"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="phone" class="cols-sm-2 control-label text">Телефон</label>
+                      <div class="cols-sm-10">
+                        <div class="input-group">
+                          <input type="phone"
+                                 class="form-control text"
+                                 id="phone"
+                                 onkeyup="this.value = this.value.replace(/[^\d]/,'');"
+                                 required
+                                 minlength="11"
+                                 maxlength="11"
+                                 name="phone"
+                                 [(ngModel)]="client.phone"
+                                 #phone="ngModel"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="Role" class="cols-sm-2 control-label text">Роль</label>
+                      <div class="cols-sm-10">
+                        <div class="input-group">
+                          <div
+                            class="form-control text"
+                            id="Role">{{client.roles}}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col" style="text-align: center">
+                    <button class="btn btn-primary text" type="submit" [disabled]="!userForm.valid">
+                      Изменить
+                    </button>
+                  </div>
+                </div>
+                <div class="row err" *ngIf="err">
+                  <div class="col">
+                    {{err}}
+                  </div>
+                </div>
+
+              </div>
+            </form>
           </div>
-          <a style="font-size: 23px" [routerLink]="['/login']"
-             class="btn btn-primary one">Войти</a>
+          <div class="row" style="margin-left: 4%">
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+<div *ngIf="isLogin">
+  <div class="container">
+    <div class="search_tabs_container">
+      <div
+        class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+        <div
+          class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+          <span>Специальные предложения:</span></div>
+      </div>
+    </div>
+    <div class="container container_class_border">
+      <div class="row justify-content-center">
+        <!--Контейнер поиска-->
+        <a class="textfind">Специальные предложения для вашего города:</a>
+        <div class="container">
+        </div>
+      </div>
+      <div style="margin-top: 5%" *ngFor="let ticket of uniqTicket">
+        <div class="search_tabs_container">
+          <div
+            class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+            <div
+              class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+              <span>Билет № {{ticket.idTicket}}</span></div>
+          </div>
+        </div>
+        <div class="row justify-content-center container_class_border">
+          <div class="container">
+            <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
+            <div class="row">
+              <div class="col">
+                <span class="price">{{ticket.price}} ₽</span>
+              </div>
+              <div class="col" style="margin-left: 60%;">
+                <a style="font-size: 25px;color: #FFFFFF" [routerLink]="['/brasket/'+ticket.idTicket+'/'+ticket.price]" type="button"
+                   class="btn btn-success ">Купить</a>
+              </div>
+            </div>
+            <table class="table table-borderless">
+              <tr>
+                <td>{{ticket.wayDto.pointFirstDto.locationDto.city}}
+                  - {{ticket.wayDto.pointEndDto.locationDto.city}}</td>
+                <td></td>
+                <td>Аэропорт</td>
+              </tr>
+              <tr>
+                <td>Дата отправки</td>
+                <td> {{ticket.startDate|date:"yyyy-mm-dd HH:mm"}}</td>
+                <td>{{ticket.wayDto.pointFirstDto.airport}} - {{ticket.wayDto.pointEndDto.airport}}</td>
+              </tr>
+              <tr>
+                <td>Дата прибытия</td>
+                <td>{{ticket.startDate|date:"yyyy-mm-dd HH:mm"}}</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
-  <ng-template #prof>
-    <div class="row no-gutters">
-      <div class="col-sm-8">
-        <div class="row" style="margin-bottom: 5%">
-          <form class="formu" (ngSubmit)="onSubmit()" #userForm="ngForm">
-            <div class="cont">
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label for="name" class="cols-sm-2 control-label text">Имя</label>
-                    <div class="cols-sm-10">
-                      <div class="input-group">
-                        <input type="text"
-                               pattern="[A-Za-zA-Яа-яЁё]*"
-                               class="form-control text"
-                               id="name"
-                               placeholder="Введите пароль"
-                               required
-                               minlength="3"
-                               name="name"
-                               [(ngModel)]="client.name"
-                               #name="ngModel"/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label for="lastname" class="cols-sm-2 control-label text">Фамилия</label>
-                    <div class="cols-sm-10">
-                      <div class="input-group">
-                        <input type="text"
-                               class="form-control text"
-                               id="lastname"
-                               pattern="[A-Za-zA-Яа-яЁё]*"
-                               placeholder="Введите пароль"
-                               required
-                               minlength="4"
-                               name="lastname"
-                               [(ngModel)]="client.lastName"
-                               #lastname="ngModel"/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label for="dateBorn" class="cols-sm-2 control-label text">Год рождения</label>
-                    <div class="cols-sm-10">
-                      <div class="input-group">
-                        <input type="date"
-                               class="form-control text"
-                               id="dateBorn"
-                               placeholder="Введите пароль"
-                               required
-                               name="dateBorn"
-                               [(ngModel)]="client.bornDay"
-                               #dateBorn="ngModel"/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label for="city" class="cols-sm-2 control-label text">Город</label>
-                    <div class="cols-sm-10">
-                      <div class="input-group">
-                        <select class="form-control text"
-                                id="city"
-                                required="required"
-                                [(ngModel)]="client!.locationDto.idLocation"
-                                #cityEnd="ngModel"
-                                name="cityEnd">
-                          <option *ngFor="let l of location"
-                                  value="{{l.idLocation}}">{{l.city}}</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label for="login" class="cols-sm-2 control-label text">Пароль</label>
-                    <div class="cols-sm-10">
-                      <div class="input-group">
-                        <input type="text"
-                               class="form-control text"
-                               id="login"
-                               required
-                               name="login"
-                               [(ngModel)]="client.login"
-                               #login="ngModel"/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label text">Почта</label>
-                    <div class="cols-sm-10">
-                      <div class="input-group">
-                        <input type="email"
-                               class="form-control text"
-                               id="email"
-                               required
-                               name="email"
-                               [(ngModel)]="client.email"
-                               #email="ngModel"/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label for="phone" class="cols-sm-2 control-label text">Телефон</label>
-                    <div class="cols-sm-10">
-                      <div class="input-group">
-                        <input type="phone"
-                               class="form-control text"
-                               id="phone"
-                               onkeyup="this.value = this.value.replace(/[^\d]/,'');"
-                               required
-                               minlength="11"
-                               maxlength="11"
-                               name="phone"
-                               [(ngModel)]="client.phone"
-                               #phone="ngModel"/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label for="Role" class="cols-sm-2 control-label text">Роль</label>
-                    <div class="cols-sm-10">
-                      <div class="input-group">
-                        <div
-                               class="form-control text"
-                               id="Role">{{client.roles}}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="row">
-                <div class="col" style="text-align: center">
-                  <button class="btn btn-primary text" type="submit" [disabled]="!userForm.valid">
-                    Изменить
-                  </button>
-                </div>
-              </div>
-              <div class="row err" *ngIf="err">
-                <div class="col">
-                  {{err}}
-                </div>
+<hr/>
+
+  <div class="container">
+    <div class="search_tabs_container">
+      <div
+        class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+        <div
+          class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+          <span>Купленные билеты:</span></div>
+      </div>
+    </div>
+    <div class="container container_class_border">
+      <div class="row justify-content-center">
+        <!--Контейнер поиска-->
+        <a class="textfind">Ваши прошлые заказы:</a>
+        <div class="container">
+        </div>
+      </div>
+      <div style="margin-top: 5%" *ngFor="let check of checks">
+        <div class="search_tabs_container">
+          <div
+            class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+            <div
+              class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+              <span>Чек № {{check.idChecks}}</span></div>
+          </div>
+        </div>
+        <div class="row justify-content-center container_class_border">
+          <div class="container">
+            <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
+            <div class="row">
+              <div class="col">
+                <span class="price">{{check.idChecks}} ₽</span>
               </div>
 
             </div>
-          </form>
-        </div>
-        <div class="row" style="margin-left: 4%">
+            <table class="table table-borderless">
+              <tr>
+                <td>Оплата производилась по карте:</td>
+                <td>Дата оплаты:</td>
+                <td>Колличество билетов</td>
+
+              </tr>
+              <tr>
+                <td>{{check.cardNumber}}</td>
+
+                <td> {{check.info}}</td>
+                <td>{{check.bidDto.ticketDtos.length}}</td>
+              </tr>
+
+              <tr>
+                <td>Общая цена</td>
+                <td>Город отлёта</td>
+                <td>Количество опций</td>
+              </tr>
+              <tr>
+                <td>{{check.bidDto.price}}</td>
+                <td> {{check.bidDto.ticketDtos[0].wayDto.pointFirstDto.locationDto.city}}</td>
+                <td>{{check.bidDto.conditionalsDtos.length}}</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </ng-template>
-</div>
-</div>
-<div *ngIf="isLogin">
-<div class="container">
-<div class="search_tabs_container">
-  <div
-    class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-    <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
-      <span>Специальные предложения:</span></div>
   </div>
-</div>
-<div class="container container_class_border">
-  <div class="row justify-content-center">
-    <!--Контейнер поиска-->
-    <a class="textfind">Специальные предложения для вашего города:</a>
-    <div class="container">
-    </div>
-  </div>
-<div class="search_tabs_container">
-  <div
-    class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-    <div
-      class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
-      <span>Билет#</span></div>
-  </div>
-</div>
-  <div class="row justify-content-center container_class_border">
-    <div class="container">
-      <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
-      <span class="price">100</span>
-      <form (ngSubmit)="onSubmit()" #authForm="ngForm">
-        <table class="table table-borderless">
-          <tr>
-            <td>Воронеж - Москва</td>
-            <td></td>
-            <td>Аэропорт</td>
-          </tr>
-          <tr>
-            <td>Дата отправки</td>
-            <td> 21.01.2001 21:15</td>
-            <td>Домодедово - Другой</td>
-          </tr>
-          <tr>
-            <td>Дата прибытия</td>
-            <td>20.01.2001 21:15</td>
-          </tr>
-        </table>
-      </form>
-    </div>
-  </div>
-</div>
-</div>
 </div>

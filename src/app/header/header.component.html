@@ -11,6 +11,9 @@
       <div class="col-md-auto" *ngIf="isLogin">
         <a class="navbar-text " [routerLink]="['/profile']">Личный Кабинет</a>
       </div>
+      <div class="col-md-auto" *ngIf="isLogin && user.role=='ADMIN'">
+        <a class="navbar-text " [routerLink]="['/admin']">Админ</a>
+      </div>
 <!--      <div class="col-md-auto">-->
 <!--        <a class="navbar-text" [routerLink]="['/brasket']">Корзина</a>-->
 <!--      </div>-->

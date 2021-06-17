@@ -12,7 +12,7 @@
       <div class="container">
       </div>
     </div>
-    <table class="table table-bordered ">
+    <table class="table table-bordered" *ngFor="let client of clients">
       <tr>
         <th>id</th>
         <th>Имя</th>
@@ -21,13 +21,13 @@
         <th>Дата Рождения</th>
       </tr>
       <tr>
-        <th>1</th>
-        <td>Вася</td>
-        <td>rasteg</td>
-        <td>vasyya@006.tu</td>
-        <td>22.01.2000</td>
+        <th>{{client.idUser}}</th>
+        <td>{{client.name}}</td>
+        <td>{{client.login}}</td>
+        <td>{{client.email}}</td>
+        <td>{{client.bornDay}}</td>
         <td>
-          <button type="button" class="btn4 btn-lg">Удалить</button>
+          <button (click)="deleteUser(client.idUser)" type="button" class="btn4 btn-lg">Удалить</button>
         </td>
       </tr>
     </table>

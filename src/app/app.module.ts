@@ -16,6 +16,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
 import {authInterceptorProviders} from "./AuthInterceptor/AuthInterceptor";
 import {AdminComponent} from "./admin/admin.component";
+import {CollapseModule} from "ngx-bootstrap/collapse";
 
 @NgModule({
   declarations: [
@@ -30,12 +31,13 @@ import {AdminComponent} from "./admin/admin.component";
     LoginComponent,
     AdminComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        CollapseModule
+    ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
