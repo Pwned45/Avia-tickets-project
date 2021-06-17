@@ -79,6 +79,7 @@ export class ProfileComponent implements OnInit {
   onSubmit() {
     this.client.pass = null;
     this.clientSev.patchClient(this.client, this.user.id).subscribe(data => {
+      location.reload()
       console.log(data)
     }, error => {
       this.err = error.message;
