@@ -108,7 +108,7 @@ public class TicketServiceImpl implements TicketService {
             return ticketDtos;
         } else {
             for (Point point : points) {
-                if (point.getWayStart() != null) {
+                if (point.getWayStart() != null && point.getWayStart().getTicket()!=null) {
                     if (point.getWayStart().getTicket().getFlag() > 0) {
                         ticketDtos.add(ticketMapper.toTicketDTO(point.getWayStart().getTicket()));
                     }
