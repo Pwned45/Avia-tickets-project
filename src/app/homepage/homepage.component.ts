@@ -5,6 +5,8 @@ import {ParametrSerch} from "../model/parametrSerch";
 import {SearchUrl} from "../model/SearchUrl";
 import {TokenStorageService} from "../service/token-storage.service";
 import {User} from "../model/user";
+import {Ticket} from "../model/ticket";
+import {TicketService} from "../service/ticket.service";
 
 @Component({
   selector: 'app-homepage',
@@ -13,12 +15,13 @@ import {User} from "../model/user";
 })
 export class HomepageComponent implements OnInit {
   location: Locat[] = [];
+  uniqTicket: Ticket[] = [];
   params: SearchUrl;
   date;
-  isLogin;
+  isLogin=false;
   user: User;
 
-  constructor(private locationService: LocationService, private tokenStroage: TokenStorageService) {
+  constructor(private locationService: LocationService, private tokenStroage: TokenStorageService, private ticketService: TicketService) {
     this.date = new Date();
     this.params = new SearchUrl();
   }
@@ -27,6 +30,7 @@ export class HomepageComponent implements OnInit {
     if (this.tokenStroage.getToken()) {
       this.isLogin = true;
       this.user = this.tokenStroage.getUser();
+      this.getUniq()
     }
     this.getAllLocation();
   }
@@ -37,6 +41,12 @@ export class HomepageComponent implements OnInit {
       console.log(date);
     },error => {
       console.log(error.message)
+    })
+  }
+  getUniq() {
+    this.ticketService.getUniqe(this.user.id).subscribe(data => {
+      this.uniqTicket = data;
+      console.log(data);
     })
   }
 

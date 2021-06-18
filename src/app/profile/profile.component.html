@@ -249,12 +249,12 @@
               </tr>
               <tr>
                 <td>Дата отправки</td>
-                <td> {{ticket.startDate|date:"yyyy-mm-dd HH:mm"}}</td>
+                <td> {{ticket.startDate}}</td>
                 <td>{{ticket.wayDto.pointFirstDto.airport}} - {{ticket.wayDto.pointEndDto.airport}}</td>
               </tr>
               <tr>
                 <td>Дата прибытия</td>
-                <td>{{ticket.startDate|date:"yyyy-mm-dd HH:mm"}}</td>
+                <td>{{ticket.endDate|date:"yyyy-MM-dd HH:mm"}}</td>
               </tr>
             </table>
           </div>

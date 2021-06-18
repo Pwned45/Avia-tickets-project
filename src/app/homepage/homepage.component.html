@@ -67,5 +67,69 @@
 
     </div>
   </div>
+
+
+  <div style="margin-top: 5%" *ngIf="isLogin">
+    <div class="container">
+      <div class="search_tabs_container">
+        <div
+          class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+          <div
+            class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+            <span>Специальные предложения:</span></div>
+        </div>
+      </div>
+      <div class="container container_class_border">
+        <div class="row justify-content-center">
+          <!--Контейнер поиска-->
+          <a class="textfind">Специальные предложения для вашего города:</a>
+          <div class="container">
+          </div>
+        </div>
+        <div style="margin-top: 5%" *ngFor="let ticket of uniqTicket">
+          <div class="search_tabs_container">
+            <div
+              class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+              <div
+                class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
+                <span>Билет № {{ticket.idTicket}}</span></div>
+            </div>
+          </div>
+          <div class="row justify-content-center container_class_border">
+            <div class="container">
+              <!--Дата отправки Дата прибытия Начальная Точка Конечная точка итог-->
+              <div class="row">
+                <div class="col">
+                  <span class="price">{{ticket.price}} ₽</span>
+                </div>
+                <div class="col" style="margin-left: 60%;">
+                  <a style="font-size: 25px;color: #FFFFFF" [routerLink]="['/brasket/'+ticket.idTicket+'/'+ticket.price]" type="button"
+                     class="btn btn-success ">Купить</a>
+                </div>
+              </div>
+              <table class="table table-borderless">
+                <tr>
+                  <td>{{ticket.wayDto.pointFirstDto.locationDto.city}}
+                    - {{ticket.wayDto.pointEndDto.locationDto.city}}</td>
+                  <td></td>
+                  <td>Аэропорт</td>
+                </tr>
+                <tr>
+                  <td>Дата отправки</td>
+                  <td> {{ticket.startDate}}</td>
+                  <td>{{ticket.wayDto.pointFirstDto.airport}} - {{ticket.wayDto.pointEndDto.airport}}</td>
+                </tr>
+                <tr>
+                  <td>Дата прибытия</td>
+                  <td>{{ticket.endDate|date:"yyyy-MM-dd HH:mm"}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
