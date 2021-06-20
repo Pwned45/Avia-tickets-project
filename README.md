@@ -13,7 +13,7 @@
 * [Курсовая.pdf](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/Kursovoy_Proekt.pdf)
 * [отчёт по ролям](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/Otchet0705_1.docx)
 * [демо-видео](https://www.youtube.com/watch?v=qqxQPKYyszI)
-* [презентация](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/Kursovoy-Proektv_p.pdf)
+* [презентация](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/Kursovoy-Proektv_p1.pdf)
 * [видео защиты "короткое"](https://www.youtube.com/watch?v=3BAjFopelII)
 * [видео защиты "итоговое!"](https://youtu.be/YpBL_RSg4lA)
 ## Сайт
