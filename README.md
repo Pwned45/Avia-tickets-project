@@ -17,7 +17,7 @@
 * [презентация](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/Kursovoy-Proektv_p1.pdf)
 * [видео защиты "короткое"](https://www.youtube.com/watch?v=3BAjFopelII)
 * [видео защиты "итоговое!"](https://youtu.be/YpBL_RSg4lA)
-* [метрики](https://metrika.yandex.ru/dashboard?group=day&period=week&id=80996416)
+* [метрики](https://metrika.yandex.ru/dashboard?id=80996416)
 ## Сайт
 * [swagger](https://aviatickets-3212.herokuapp.com/swagger-ui/) для проверки результатов, нужно авторизироваться и указать в Available authorizations, который выглядит так  Bearer_{токен который Вы получили}
 * [Сайт Avia Tickers](https://aviatickets-3214.herokuapp.com/) соединение достаточно долгое!
