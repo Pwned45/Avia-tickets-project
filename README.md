@@ -1,5 +1,6 @@
 # Avia-tickets
 Поиск электронных авиабилетов
+Исходные коды проета, можно у видеть в ветках master и frontend
 ## Команда проекта
 * Pwned45 - Даниил Коновалов, гр.2.1 daniloid2015@yandex.ru 
 * DeaDulia - Никита Дёшин, гр.2.1 xxnick1411xx@gmail.com
@@ -16,6 +17,7 @@
 * [презентация](https://github.com/Pwned45/Avia-tickets-project/blob/main/doc/Kursovoy-Proektv_p1.pdf)
 * [видео защиты "короткое"](https://www.youtube.com/watch?v=3BAjFopelII)
 * [видео защиты "итоговое!"](https://youtu.be/YpBL_RSg4lA)
+* [метрики](https://metrika.yandex.ru/dashboard?group=day&period=week&id=80996416)
 ## Сайт
 * [swagger](https://aviatickets-3212.herokuapp.com/swagger-ui/) для проверки результатов, нужно авторизироваться и указать в Available authorizations, который выглядит так  Bearer_{токен который Вы получили}
 * [Сайт Avia Tickers](https://aviatickets-3214.herokuapp.com/) соединение достаточно долгое!
